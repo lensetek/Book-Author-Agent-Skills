@@ -25,6 +25,7 @@ Output:
 - `fabrication_risks`.
 - `bibliography_issues`.
 - `source_use_notes`.
+- `reference_search_needs`: claims or topics that should be sent to `academic-reference-finder`.
 - `clean_revision_guidance`.
 
 ## Review Rules
@@ -33,4 +34,5 @@ Output:
 - Flag claims with statistics, dates, named theories, adapted models, legal/regulatory statements, and empirical findings.
 - Distinguish missing citation from weak explanation.
 - If bibliography details are incomplete, mark `[detail referensi perlu dilengkapi]`.
+- If a claim needs a new source, recommend `academic-reference-finder` and specify the search topic.
 - Do not repeat confidential data from the draft.

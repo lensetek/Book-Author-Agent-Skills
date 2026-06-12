@@ -29,6 +29,7 @@ Output:
 - `book_potential`: recommended book type and rationale.
 - `source_gaps`.
 - `citation_gaps`.
+- `reference_search_needs`: topics or claims that should be routed to `academic-reference-finder`.
 - `security_privacy_notes`.
 
 ## Process
@@ -38,6 +39,7 @@ Output:
 3. Extract only what is supported by the source.
 4. Separate facts, interpretations, and assumptions.
 5. Identify what must be added before book drafting.
+6. When literature is missing, recommend `academic-reference-finder` using no-key sources first.
 
 ## Rules
 

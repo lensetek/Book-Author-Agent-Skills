@@ -34,6 +34,7 @@ Core principles:
 - mark claims that need citations,
 - separate facts, assumptions, and interpretations,
 - protect credentials, private data, document metadata, and sensitive research material.
+- use no-key reference sources first: Crossref, arXiv, PubMed/NCBI, Europe PMC, and unauthenticated Semantic Scholar when available.
 
 Export defaults:
 
@@ -49,6 +50,7 @@ Export defaults:
 | `book-author-orchestrator` | Workflow manager for the full academic book process. | Intake, routing, coordination, final checks. | Workflow path, recommended agents, combined output. |
 | `academic-book-intake` | Clarifies the book project. | Define purpose, audience, discipline, book type, sources, standards. | Project brief and next step. |
 | `academic-source-analyzer` | Analyzes academic source material. | Extract concepts, learning outcomes, findings, methods, gaps, risks. | Source summary and gap list. |
+| `academic-reference-finder` | Finds references without API keys. | Search no-key sources, validate DOI metadata, rank candidates, mark limitations. | Reference candidates and DOI checks. |
 | `academic-book-architect` | Designs the book structure. | Decide textbook, reference book, or monograph structure. | Chapter map and rationale. |
 | `academic-outline-builder` | Builds detailed outlines. | Create table of contents, chapter goals, summaries, figure/table needs. | Complete outline and chapter plan. |
 | `academic-chapter-writer` | Drafts academic chapters. | Write or revise chapters in Indonesian academic style. | Chapter draft and revision notes. |
@@ -76,11 +78,13 @@ flowchart TD
     D --> F["paper-to-monograf"]
     D --> G["research-synthesis-to-reference-book"]
     D --> H["academic-book-intake"]
-    H --> I["academic-book-architect"]
+    H --> I["academic-source-analyzer"]
+    I --> T["academic-reference-finder"]
+    T --> U["academic-book-architect"]
     E --> J["academic-outline-builder"]
     F --> J
     G --> J
-    I --> J
+    U --> J
     J --> K["academic-chapter-writer"]
     K --> L["citation-integrity-reviewer"]
     L --> M["academic-book-reviewer"]
@@ -116,12 +120,13 @@ Expected confirmation:
 
 ```text
 Installation completed.
-Total installed agent skills: 18
+Total installed agent skills: 19
 
 Installed agents:
 - book-author-orchestrator
 - academic-book-intake
 - academic-source-analyzer
+- academic-reference-finder
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
@@ -147,6 +152,10 @@ Security/privacy checker installed: yes.
 
 ```text
 Use book-author-orchestrator. I have an idea for a book about AI for SME marketing. Create a project brief and reference book outline.
+```
+
+```text
+Use academic-reference-finder. Find recent references for this chapter using no-key sources only: Crossref, arXiv, PubMed, Europe PMC, and public Semantic Scholar access.
 ```
 
 ```text
@@ -176,7 +185,7 @@ For Claude, Antigravity, Cursor, ChatGPT custom agents, LangGraph, CrewAI, AutoG
   "audience": "target readers",
   "constraints": ["publisher/campus/style requirements"],
   "source_material": "text, file summary, or references",
-  "desired_output": "brief | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
+  "desired_output": "brief | references | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
 }
 ```
 
@@ -216,6 +225,7 @@ Prinsip utama:
 - menandai klaim yang perlu sitasi,
 - membedakan fakta, asumsi, dan interpretasi,
 - menjaga credential, data pribadi, metadata dokumen, dan materi riset sensitif.
+- memakai sumber referensi tanpa API key lebih dulu: Crossref, arXiv, PubMed/NCBI, Europe PMC, dan Semantic Scholar tanpa autentikasi bila tersedia.
 
 Default export:
 
@@ -231,6 +241,7 @@ Default export:
 | `book-author-orchestrator` | Manager workflow untuk proses buku akademik lengkap. | Intake, routing, koordinasi, final check. | Jalur kerja, rekomendasi agent, output gabungan. |
 | `academic-book-intake` | Mengklarifikasi proyek buku. | Menentukan tujuan, audiens, disiplin, jenis buku, sumber, standar. | Project brief dan langkah berikutnya. |
 | `academic-source-analyzer` | Menganalisis sumber akademik. | Mengekstrak konsep, CPMK, temuan, metode, gap, risiko. | Ringkasan sumber dan daftar gap. |
+| `academic-reference-finder` | Mencari referensi tanpa API key. | Mencari di sumber no-key, validasi DOI, ranking kandidat, menandai limitasi. | Kandidat referensi dan cek DOI. |
 | `academic-book-architect` | Merancang struktur buku. | Menentukan struktur buku ajar, referensi, atau monograf. | Chapter map dan rationale. |
 | `academic-outline-builder` | Menyusun outline detail. | Membuat daftar isi, tujuan bab, ringkasan, kebutuhan gambar/tabel. | Outline lengkap dan chapter plan. |
 | `academic-chapter-writer` | Menulis bab akademik. | Menulis atau merevisi bab dengan gaya akademik Indonesia. | Draft bab dan catatan revisi. |
@@ -258,11 +269,13 @@ flowchart TD
     D --> F["paper-to-monograf"]
     D --> G["research-synthesis-to-reference-book"]
     D --> H["academic-book-intake"]
-    H --> I["academic-book-architect"]
+    H --> I["academic-source-analyzer"]
+    I --> T["academic-reference-finder"]
+    T --> U["academic-book-architect"]
     E --> J["academic-outline-builder"]
     F --> J
     G --> J
-    I --> J
+    U --> J
     J --> K["academic-chapter-writer"]
     K --> L["citation-integrity-reviewer"]
     L --> M["academic-book-reviewer"]
@@ -296,12 +309,13 @@ Output konfirmasi yang diharapkan:
 
 ```text
 Install selesai.
-Total agent skill terinstall: 18
+Total agent skill terinstall: 19
 
 Daftar agent:
 - book-author-orchestrator
 - academic-book-intake
 - academic-source-analyzer
+- academic-reference-finder
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
@@ -330,6 +344,10 @@ Gunakan book-author-orchestrator. Saya punya ide buku tentang AI untuk pemasaran
 ```
 
 ```text
+Gunakan academic-reference-finder. Cari referensi terbaru untuk bab ini hanya memakai sumber tanpa API key: Crossref, arXiv, PubMed, Europe PMC, dan akses publik Semantic Scholar.
+```
+
+```text
 Gunakan book-cover-designer. Buat brief cover depan dan belakang untuk monograf saya dengan ukuran UNESCO.
 ```
 
@@ -352,7 +370,7 @@ Gunakan book-pdf-exporter. Siapkan pengaturan export PDF final ukuran A5 dan ser
   "audience": "target pembaca",
   "constraints": ["standar penerbit/kampus/gaya"],
   "source_material": "teks, ringkasan file, atau referensi",
-  "desired_output": "brief | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
+  "desired_output": "brief | references | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
 }
 ```
 

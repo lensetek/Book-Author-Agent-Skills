@@ -1,0 +1,3 @@
+display_name: Academic Reference Finder
+short_description: Finds academic paper and reference candidates using no-key sources such as Crossref, arXiv, PubMed, Europe PMC, and public Semantic Scholar access.
+default_prompt: Find relevant academic references for my book topic using no-key sources only, validate DOI metadata where possible, and mark citation gaps.

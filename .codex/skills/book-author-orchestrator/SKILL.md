@@ -25,7 +25,7 @@ Start by identifying the source path and target book type. If the user has not p
 - source material: idea, RPS, single paper, multiple papers, or mixed documents,
 - field/discipline and target readers,
 - required standard: campus, publisher, accreditation, or grant output,
-- desired output for this turn: brief, outline, chapter, review, edit, cover, layout, DOCX, PDF, or final package.
+- desired output for this turn: brief, references, outline, chapter, review, edit, cover, layout, DOCX, PDF, or final package.
 
 Before processing content, perform a security/privacy scan. If the input includes credentials, API keys, tokens, private student data, respondent identities, unpublished sensitive data, or frontend-exposed secrets, stop and ask the user to sanitize or approve a redacted workflow.
 
@@ -35,6 +35,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 
 - **academic-book-intake**: clarify project goal, audience, discipline, standard, source type, book type, target length, and success criteria.
 - **academic-source-analyzer**: extract concepts, findings, CPMK/sub-CPMK, key terms, argument structure, evidence, source gaps, and plagiarism/citation risks.
+- **academic-reference-finder**: find paper/reference candidates using no-key sources such as Crossref, arXiv, PubMed/NCBI, Europe PMC, and unauthenticated Semantic Scholar when available.
 - **academic-book-architect**: choose structure based on book type.
 - **academic-outline-builder**: build table of contents, chapter objectives, chapter summaries, flow of argument, figures/tables needed, and missing sources.
 - **academic-chapter-writer**: draft chapters in Indonesian academic style.
@@ -54,6 +55,8 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 ## Routing Shortcuts
 
 - User asks for cover, front/back cover, spine, or image prompt: route to `book-cover-designer`.
+- User asks to find references, papers, DOI metadata, journals, or sources without credentials: route to `academic-reference-finder`.
+- User asks for "referensi", "daftar pustaka", "paper pendukung", "cari jurnal", "sumber ilmiah", or "citation sources": route to `academic-reference-finder`.
 - User asks for page design, chapter pages, header, footer, page numbers, typography, or interior layout: route to `book-layout-designer`.
 - User asks for editable Word/Google Docs output, `.docx`, or publisher-editable manuscript: route to `book-docx-exporter`.
 - User asks for final PDF, print proof, A5, A4, UNESCO, or custom book size: route to `book-pdf-exporter`.
@@ -70,12 +73,12 @@ Use this common input envelope when possible:
 {
   "task": "what the user wants",
   "book_type": "buku ajar | buku referensi | monograf | undecided",
-  "source_type": "idea | rps | single_paper | multiple_papers | mixed",
+  "source_type": "idea | rps | single_paper | multiple_papers | topic_needing_references | mixed",
   "discipline": "field or course",
   "audience": "target readers",
   "constraints": ["publisher/campus/style requirements"],
   "source_material": "text, file summary, or references",
-  "desired_output": "brief | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
+  "desired_output": "brief | references | outline | chapter | review | edit | cover | layout | docx | pdf | final_package"
 }
 ```
 
@@ -84,8 +87,16 @@ Every specialist should return:
 - `status`: ready, needs_input, blocked_security, or completed.
 - `output`: the requested artifact.
 - `assumptions`: decisions made without full information.
+- `reference_candidates`: candidate sources found or recommended, when relevant.
 - `citation_gaps`: claims or sections needing sources.
 - `security_privacy_notes`: sensitive-data findings without repeating secret values.
+
+Reference-search default:
+
+- Use no-key sources first: Crossref, arXiv, PubMed/NCBI E-utilities, Europe PMC, and unauthenticated Semantic Scholar when available.
+- Do not require API keys for normal reference search.
+- Do not scrape Google Scholar or bypass paywalls.
+- If higher limits or private databases are requested, ask the user before using credentials and route any provided secret through `book-security-privacy-checker`.
 
 ## Workflow
 
@@ -96,6 +107,8 @@ Every specialist should return:
 
 2. **Source Analysis**
    - Use `academic-source-analyzer`.
+   - Use `academic-reference-finder` when source gaps, citation gaps, or literature expansion require online paper discovery.
+   - For reference search, use no-key sources first and return DOI/metadata confidence notes.
    - Extract concepts, CPMK, methods, findings, key references, and gaps.
    - Separate facts from assumptions and missing evidence.
 

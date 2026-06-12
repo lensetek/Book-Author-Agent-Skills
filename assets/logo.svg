@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">Book Author Agent Skills logo</title>
+  <desc id="desc">An academic book icon with connected agent nodes and the Book Author Agent Skills wordmark.</desc>
+  <defs>
+    <linearGradient id="cover" x1="54" y1="28" x2="150" y2="152" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b8783a"/>
+      <stop offset="1" stop-color="#274766"/>
+    </linearGradient>
+    <linearGradient id="page" x1="78" y1="42" x2="132" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7f4ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="180" rx="24" fill="#f7f4ee"/>
+  <g transform="translate(34 24)">
+    <rect x="20" y="16" width="104" height="128" rx="14" fill="url(#cover)"/>
+    <path d="M44 38h62c10 0 18 8 18 18v88H58c-8 0-14-6-14-14V38Z" fill="url(#page)" opacity=".95"/>
+    <path d="M58 56h48M58 76h38M58 96h48M58 116h30" stroke="#274766" stroke-width="7" stroke-linecap="round" opacity=".72"/>
+    <path d="M124 48c22 4 38 22 38 44s-16 40-38 44" fill="none" stroke="#1d2433" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="164" cy="92" r="15" fill="#b8783a"/>
+    <circle cx="124" cy="48" r="10" fill="#536b54"/>
+    <circle cx="124" cy="136" r="10" fill="#536b54"/>
+    <path d="M134 52l20 28M134 132l20-28" stroke="#1d2433" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(230 54)">
+    <text x="0" y="40" fill="#1d2433" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="0">
+      Book Author
+    </text>
+    <text x="0" y="82" fill="#274766" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0">
+      Agent Skills
+    </text>
+    <text x="2" y="114" fill="#536b54" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="0">
+      Textbook • Reference Book • Monograph • DOCX • PDF
+    </text>
+  </g>
+</svg>

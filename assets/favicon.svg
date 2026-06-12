@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Book Author Agent Skills favicon">
+  <defs>
+    <linearGradient id="cover" x1="10" y1="7" x2="48" y2="57" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b8783a"/>
+      <stop offset="1" stop-color="#274766"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#f7f4ee"/>
+  <rect x="12" y="9" width="34" height="46" rx="7" fill="url(#cover)"/>
+  <path d="M22 18h17c4 0 7 3 7 7v30H25c-4 0-7-3-7-7V18h4Z" fill="#fff" opacity=".95"/>
+  <path d="M25 26h14M25 34h11M25 42h14" stroke="#274766" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M46 19c8 3 13 10 13 19s-5 16-13 19" fill="none" stroke="#1d2433" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="55" cy="38" r="5" fill="#b8783a"/>
+  <circle cx="46" cy="19" r="3.5" fill="#536b54"/>
+  <circle cx="46" cy="57" r="3.5" fill="#536b54"/>
+</svg>

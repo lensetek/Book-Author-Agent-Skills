@@ -35,6 +35,7 @@ Core principles:
 - separate facts, assumptions, and interpretations,
 - protect credentials, private data, document metadata, and sensitive research material.
 - use no-key reference sources first: Crossref, arXiv, PubMed/NCBI, Europe PMC, and unauthenticated Semantic Scholar when available.
+- update checks are confirmation-first: the update monitor checks the GitHub repository and asks before download or overwrite.
 
 Export defaults:
 
@@ -48,6 +49,7 @@ Export defaults:
 | Agent | Description | Main tasks | Main output |
 | --- | --- | --- | --- |
 | `book-author-orchestrator` | Workflow manager for the full academic book process. | Intake, routing, coordination, final checks. | Workflow path, recommended agents, combined output. |
+| `agent-skill-update-monitor` | Checks repository updates. | Compare local skills with GitHub, summarize updates, ask before download/update. | Update status and confirmation prompt. |
 | `academic-book-intake` | Clarifies the book project. | Define purpose, audience, discipline, book type, sources, standards. | Project brief and next step. |
 | `academic-source-analyzer` | Analyzes academic source material. | Extract concepts, learning outcomes, findings, methods, gaps, risks. | Source summary and gap list. |
 | `academic-reference-finder` | Finds references without API keys. | Search no-key sources, validate DOI metadata, rank candidates, mark limitations. | Reference candidates and DOI checks. |
@@ -120,10 +122,11 @@ Expected confirmation:
 
 ```text
 Installation completed.
-Total installed agent skills: 19
+Total installed agent skills: 20
 
 Installed agents:
 - book-author-orchestrator
+- agent-skill-update-monitor
 - academic-book-intake
 - academic-source-analyzer
 - academic-reference-finder
@@ -152,6 +155,10 @@ Security/privacy checker installed: yes.
 
 ```text
 Use book-author-orchestrator. I have an idea for a book about AI for SME marketing. Create a project brief and reference book outline.
+```
+
+```text
+Use agent-skill-update-monitor. Check the GitHub repository for updates and ask me before downloading or updating any installed skill.
 ```
 
 ```text
@@ -226,6 +233,7 @@ Prinsip utama:
 - membedakan fakta, asumsi, dan interpretasi,
 - menjaga credential, data pribadi, metadata dokumen, dan materi riset sensitif.
 - memakai sumber referensi tanpa API key lebih dulu: Crossref, arXiv, PubMed/NCBI, Europe PMC, dan Semantic Scholar tanpa autentikasi bila tersedia.
+- pengecekan update harus konfirmasi dulu: update monitor mengecek repository GitHub dan bertanya sebelum download atau overwrite.
 
 Default export:
 
@@ -239,6 +247,7 @@ Default export:
 | Agent | Deskripsi | Tugas utama | Output utama |
 | --- | --- | --- | --- |
 | `book-author-orchestrator` | Manager workflow untuk proses buku akademik lengkap. | Intake, routing, koordinasi, final check. | Jalur kerja, rekomendasi agent, output gabungan. |
+| `agent-skill-update-monitor` | Mengecek update repository. | Membandingkan skill lokal dengan GitHub, merangkum update, meminta konfirmasi sebelum download/update. | Status update dan prompt konfirmasi. |
 | `academic-book-intake` | Mengklarifikasi proyek buku. | Menentukan tujuan, audiens, disiplin, jenis buku, sumber, standar. | Project brief dan langkah berikutnya. |
 | `academic-source-analyzer` | Menganalisis sumber akademik. | Mengekstrak konsep, CPMK, temuan, metode, gap, risiko. | Ringkasan sumber dan daftar gap. |
 | `academic-reference-finder` | Mencari referensi tanpa API key. | Mencari di sumber no-key, validasi DOI, ranking kandidat, menandai limitasi. | Kandidat referensi dan cek DOI. |
@@ -309,10 +318,11 @@ Output konfirmasi yang diharapkan:
 
 ```text
 Install selesai.
-Total agent skill terinstall: 19
+Total agent skill terinstall: 20
 
 Daftar agent:
 - book-author-orchestrator
+- agent-skill-update-monitor
 - academic-book-intake
 - academic-source-analyzer
 - academic-reference-finder
@@ -341,6 +351,10 @@ Security/privacy checker terinstall: ya.
 
 ```text
 Gunakan book-author-orchestrator. Saya punya ide buku tentang AI untuk pemasaran UMKM. Buatkan project brief dan outline buku referensi.
+```
+
+```text
+Gunakan agent-skill-update-monitor. Cek apakah ada update di repository GitHub dan tanya saya dulu sebelum download atau update skill yang terinstall.
 ```
 
 ```text

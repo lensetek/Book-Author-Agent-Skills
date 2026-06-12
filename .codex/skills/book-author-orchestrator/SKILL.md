@@ -34,6 +34,7 @@ Before processing content, perform a security/privacy scan. If the input include
 Use these specialist skills directly when the user asks for a narrow task. Use this orchestrator when the user wants end-to-end book development, is unsure which specialist to use, or provides mixed source material.
 
 - **academic-book-intake**: clarify project goal, audience, discipline, standard, source type, book type, target length, and success criteria.
+- **agent-skill-update-monitor**: check the GitHub repository for available skill updates and ask the user before downloading or updating installed agent skills.
 - **academic-source-analyzer**: extract concepts, findings, CPMK/sub-CPMK, key terms, argument structure, evidence, source gaps, and plagiarism/citation risks.
 - **academic-reference-finder**: find paper/reference candidates using no-key sources such as Crossref, arXiv, PubMed/NCBI, Europe PMC, and unauthenticated Semantic Scholar when available.
 - **academic-book-architect**: choose structure based on book type.
@@ -55,6 +56,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 ## Routing Shortcuts
 
 - User asks for cover, front/back cover, spine, or image prompt: route to `book-cover-designer`.
+- User asks to check updates, update agent skills, refresh from GitHub, download latest version, or compare installed version: route to `agent-skill-update-monitor`.
 - User asks to find references, papers, DOI metadata, journals, or sources without credentials: route to `academic-reference-finder`.
 - User asks for "referensi", "daftar pustaka", "paper pendukung", "cari jurnal", "sumber ilmiah", or "citation sources": route to `academic-reference-finder`.
 - User asks for page design, chapter pages, header, footer, page numbers, typography, or interior layout: route to `book-layout-designer`.
@@ -97,6 +99,13 @@ Reference-search default:
 - Do not require API keys for normal reference search.
 - Do not scrape Google Scholar or bypass paywalls.
 - If higher limits or private databases are requested, ask the user before using credentials and route any provided secret through `book-security-privacy-checker`.
+
+Update-check default:
+
+- Use `agent-skill-update-monitor` for repository update checks.
+- Check-only first; never download, overwrite, or update skills without user confirmation.
+- Default repository is `https://github.com/lensetek/Book-Author-Agent-Skills`.
+- After any confirmed update, verify total installed agent count and required `SKILL.md` files.
 
 ## Workflow
 

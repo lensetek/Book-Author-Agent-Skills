@@ -1,0 +1,3 @@
+display_name: Agent Skill Update Monitor
+short_description: Checks the GitHub repository for skill updates, summarizes changes, and asks before downloading or updating.
+default_prompt: Check whether Book Author Agent Skills has updates in its GitHub repository, summarize the available version, and ask me before downloading or updating.

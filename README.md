@@ -13,7 +13,7 @@ Book Author Agent Skills is a collection of agent skills for creating **textbook
 Use your repository link when asking an agent to install the skills:
 
 ```text
-https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+https://github.com/lensetek/Book-Author-Agent-Skills
 ```
 
 Replace the link above with the actual GitHub repository URL.
@@ -98,7 +98,7 @@ The easiest way is to ask your agent to install the skills from a GitHub link.
 
 ```text
 Please install Book Author Agent Skills from this GitHub repository:
-https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+https://github.com/lensetek/Book-Author-Agent-Skills
 
 Install them as agent skills in this project.
 
@@ -195,7 +195,7 @@ Book Author Agent Skills adalah kumpulan agent skills untuk membuat **buku ajar*
 Gunakan link repository ketika meminta agent menginstall skills:
 
 ```text
-https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+https://github.com/lensetek/Book-Author-Agent-Skills
 ```
 
 Ganti link di atas dengan URL repository GitHub yang sebenarnya.
@@ -278,7 +278,7 @@ flowchart TD
 
 ```text
 Tolong install Book Author Agent Skills dari repository GitHub ini:
-https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+https://github.com/lensetek/Book-Author-Agent-Skills
 
 Install menjadi agent skills di project ini.
 

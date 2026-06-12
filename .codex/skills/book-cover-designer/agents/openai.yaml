@@ -1,0 +1,3 @@
+display_name: Book Cover Designer
+short_description: Creates front, back, and spine cover briefs and image prompts for academic books.
+default_prompt: Create a front and back cover design brief for my academic book, including size, visual direction, typography, and print notes.

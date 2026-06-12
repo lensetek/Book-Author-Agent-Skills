@@ -1,0 +1,3 @@
+display_name: Academic Book Author
+short_description: Turns ideas, RPS, and research papers into Indonesian academic book plans, chapters, and reviews.
+default_prompt: Help me turn my idea, RPS, or research paper into a buku ajar, buku referensi, or monograf with a clear academic workflow, citation checks, and privacy/security review.

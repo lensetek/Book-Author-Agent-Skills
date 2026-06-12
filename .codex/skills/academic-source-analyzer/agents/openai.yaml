@@ -1,0 +1,3 @@
+display_name: Academic Source Analyzer
+short_description: Extracts concepts, outcomes, findings, gaps, and risks from academic source material.
+default_prompt: Analyze my idea, RPS, paper, or research notes so they can be developed into an academic book.

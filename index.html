@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Author Agent Skills</title>
+    <meta
+      name="description"
+      content="Agent skills for creating textbooks, reference books, and monographs from ideas, course plans, and research papers."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#1d2433",
+              paper: "#f7f4ee",
+              moss: "#536b54",
+              brass: "#b8783a",
+              marine: "#274766",
+            },
+            boxShadow: {
+              soft: "0 18px 60px rgba(29, 36, 51, 0.14)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        letter-spacing: 0;
+      }
+
+      .hero-image {
+        background-image:
+          linear-gradient(90deg, rgba(18, 24, 38, 0.82), rgba(18, 24, 38, 0.54), rgba(18, 24, 38, 0.18)),
+          url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2200&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .lang-id [data-lang="en"],
+      .lang-en [data-lang="id"] {
+        display: none;
+      }
+
+      .tab-active {
+        background: #1d2433;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body class="lang-en bg-paper text-ink antialiased">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/20 bg-ink/72 text-white backdrop-blur">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#top" class="flex items-center gap-3 font-semibold">
+          <span class="grid h-9 w-9 place-items-center rounded bg-white text-ink">BA</span>
+          <span>Book Author Agent Skills</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <a href="#agents" class="hidden text-sm text-white/82 hover:text-white sm:inline">Agents</a>
+          <a href="#install" class="hidden text-sm text-white/82 hover:text-white sm:inline">Install</a>
+          <div class="rounded border border-white/25 p-1">
+            <button id="btn-en" class="rounded px-3 py-1 text-sm tab-active" type="button">EN</button>
+            <button id="btn-id" class="rounded px-3 py-1 text-sm text-white" type="button">ID</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-image min-h-[92vh] pt-24 text-white">
+        <div class="mx-auto flex min-h-[calc(92vh-6rem)] max-w-7xl flex-col justify-center px-4 pb-16 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <p class="mb-5 inline-flex rounded bg-white/14 px-3 py-1 text-sm font-medium text-white ring-1 ring-white/25">
+              <span data-lang="en">Orchestrator + specialist academic writing agents</span>
+              <span data-lang="id">Orchestrator + specialist agent penulisan akademik</span>
+            </p>
+            <h1 class="max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+              <span data-lang="en">Book Author Agent Skills</span>
+              <span data-lang="id">Book Author Agent Skills</span>
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/88">
+              <span data-lang="en">
+                Create textbooks, reference books, and monographs from ideas, RPS/course plans, research papers, and literature collections.
+              </span>
+              <span data-lang="id">
+                Membuat buku ajar, buku referensi, dan monograf dari ide, RPS, paper penelitian, dan kumpulan literatur.
+              </span>
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#install" class="inline-flex items-center justify-center rounded bg-brass px-5 py-3 font-semibold text-white shadow-soft hover:bg-[#a66831]">
+                <span data-lang="en">Install from GitHub</span>
+                <span data-lang="id">Install dari GitHub</span>
+              </a>
+              <a href="#agents" class="inline-flex items-center justify-center rounded border border-white/50 px-5 py-3 font-semibold text-white hover:bg-white/10">
+                <span data-lang="en">View agent list</span>
+                <span data-lang="id">Lihat daftar agent</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-ink/10 bg-white py-6">
+        <div class="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
+          <div>
+            <p class="text-3xl font-semibold">18</p>
+            <p class="text-sm text-ink/68" data-lang="en">agent skills</p>
+            <p class="text-sm text-ink/68" data-lang="id">agent skills</p>
+          </div>
+          <div>
+            <p class="text-3xl font-semibold">3</p>
+            <p class="text-sm text-ink/68" data-lang="en">book types: textbook, reference book, monograph</p>
+            <p class="text-sm text-ink/68" data-lang="id">jenis buku: buku ajar, referensi, monograf</p>
+          </div>
+          <div>
+            <p class="text-3xl font-semibold">2x</p>
+            <p class="text-sm text-ink/68" data-lang="en">security and privacy checks in every workflow</p>
+            <p class="text-sm text-ink/68" data-lang="id">cek keamanan dan privasi di setiap workflow</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="en">What it does</p>
+              <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="id">Fungsi utama</p>
+              <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+                <span data-lang="en">A portable academic book workflow for agent apps.</span>
+                <span data-lang="id">Workflow buku akademik portabel untuk agent app.</span>
+              </h2>
+              <p class="mt-5 leading-8 text-ink/72">
+                <span data-lang="en">
+                  Use it inside Codex, Claude, Antigravity, Cursor, ChatGPT custom agents, or your own multi-agent system. Each skill is a readable instruction file with a clear contract.
+                </span>
+                <span data-lang="id">
+                  Bisa dipakai di Codex, Claude, Antigravity, Cursor, ChatGPT custom agents, atau sistem multi-agent sendiri. Setiap skill adalah file instruksi dengan kontrak kerja yang jelas.
+                </span>
+              </p>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">Idea to book</h3>
+                <h3 class="font-semibold" data-lang="id">Ide menjadi buku</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Clarify the idea, choose the book type, and build an academic outline.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Mematangkan ide, memilih jenis buku, dan membuat outline akademik.</p>
+              </article>
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">RPS to textbook</h3>
+                <h3 class="font-semibold" data-lang="id">RPS menjadi buku ajar</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Map CPMK, topics, exercises, assignments, and assessment plans.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Memetakan CPMK, topik, latihan, tugas, dan asesmen.</p>
+              </article>
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">Paper to monograph</h3>
+                <h3 class="font-semibold" data-lang="id">Paper menjadi monograf</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Expand one focused research project into a contribution-driven monograph.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Mengembangkan riset terfokus menjadi monograf berbasis kontribusi.</p>
+              </article>
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">Research to reference book</h3>
+                <h3 class="font-semibold" data-lang="id">Riset menjadi buku referensi</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Cluster papers and synthesize theories, findings, gaps, and directions.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Mengelompokkan paper dan menyintesis teori, temuan, gap, dan arah riset.</p>
+              </article>
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">Cover, layout, DOCX, PDF</h3>
+                <h3 class="font-semibold" data-lang="id">Cover, layout, DOCX, PDF</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Prepare front/back covers, interior pages, editable DOCX, and final PDF.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Menyiapkan cover depan/belakang, halaman interior, DOCX editable, dan PDF final.</p>
+              </article>
+              <article class="rounded border border-ink/10 bg-white p-6 shadow-soft">
+                <h3 class="font-semibold" data-lang="en">Default UNESCO size</h3>
+                <h3 class="font-semibold" data-lang="id">Default ukuran UNESCO</h3>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="en">Export agents support UNESCO by default, plus A5, A4, and custom sizes.</p>
+                <p class="mt-3 text-sm leading-6 text-ink/70" data-lang="id">Agent export mendukung default UNESCO, plus A5, A4, dan ukuran custom.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="agents" class="bg-ink py-20 text-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="en">Agent directory</p>
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="id">Direktori agent</p>
+            <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+              <span data-lang="en">Call the orchestrator, or call a specialist directly.</span>
+              <span data-lang="id">Panggil orchestrator, atau langsung panggil specialist.</span>
+            </h2>
+          </div>
+          <div id="agent-grid" class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+        </div>
+      </section>
+
+      <section id="workflow" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="en">Workflow</p>
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="id">Workflow</p>
+            <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+              <span data-lang="en">Security-first routing from source to manuscript.</span>
+              <span data-lang="id">Routing dari sumber ke naskah dengan keamanan sebagai gerbang awal.</span>
+            </h2>
+          </div>
+          <div class="mt-10 grid gap-4 lg:grid-cols-6">
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">01</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Intake</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Intake</h3>
+            </div>
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">02</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Security check</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Cek keamanan</h3>
+            </div>
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">03</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Route source</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Routing sumber</h3>
+            </div>
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">04</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Outline & draft</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Outline & draft</h3>
+            </div>
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">05</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Review</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Review</h3>
+            </div>
+            <div class="rounded bg-white p-5 shadow-soft lg:col-span-1">
+              <p class="text-sm font-semibold text-brass">06</p>
+              <h3 class="mt-2 font-semibold" data-lang="en">Finalize</h3>
+              <h3 class="mt-2 font-semibold" data-lang="id">Finalisasi</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="bg-white py-20">
+        <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="en">Install prompt</p>
+            <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="id">Prompt install</p>
+            <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+              <span data-lang="en">Give your agent a GitHub link and ask it to install.</span>
+              <span data-lang="id">Beri agent link GitHub dan minta install.</span>
+            </h2>
+            <p class="mt-5 leading-8 text-ink/72">
+              <span data-lang="en">Replace the placeholder URL with your real repository link. The agent should install the skills, then confirm 18 agents and required core agents.</span>
+              <span data-lang="id">Ganti URL placeholder dengan link repository asli. Agent harus install skills, lalu konfirmasi 18 agent dan agent inti yang wajib ada.</span>
+            </p>
+          </div>
+          <div class="rounded bg-ink p-5 text-white shadow-soft">
+            <div class="mb-4 flex items-center justify-between gap-4">
+              <p class="font-semibold" data-lang="en">Copy install prompt</p>
+              <p class="font-semibold" data-lang="id">Salin prompt install</p>
+              <button id="copy-install" class="rounded bg-brass px-3 py-2 text-sm font-semibold hover:bg-[#a66831]" type="button">
+                <span data-lang="en">Copy</span>
+                <span data-lang="id">Salin</span>
+              </button>
+            </div>
+            <pre class="max-h-[28rem] overflow-auto whitespace-pre-wrap rounded bg-black/28 p-4 text-sm leading-6 text-white/90"><code id="install-prompt"></code></pre>
+            <p id="copy-status" class="mt-3 text-sm text-white/70"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="en">Security</p>
+              <p class="text-sm font-semibold uppercase tracking-wide text-brass" data-lang="id">Keamanan</p>
+              <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+                <span data-lang="en">No credentials in public output or frontend bundles.</span>
+                <span data-lang="id">Tidak ada credential di output publik atau bundle frontend.</span>
+              </h2>
+              <p class="mt-5 leading-8 text-ink/72">
+                <span data-lang="en">Every workflow begins and ends with security and privacy checks for API keys, student data, respondent identities, document metadata, and public frontend variables.</span>
+                <span data-lang="id">Setiap workflow diawali dan diakhiri cek keamanan untuk API key, data mahasiswa, identitas responden, metadata dokumen, dan variable frontend publik.</span>
+              </p>
+            </div>
+            <ul class="space-y-3">
+              <li class="rounded border border-ink/10 bg-white p-4">API keys, tokens, passwords, `.env`, cloud credentials</li>
+              <li class="rounded border border-ink/10 bg-white p-4">Student data, grades, respondent identities, personal data</li>
+              <li class="rounded border border-ink/10 bg-white p-4">Frontend-exposed secrets: public JavaScript, source maps, `VITE_*`</li>
+              <li class="rounded border border-ink/10 bg-white p-4">Document comments, tracked changes, hidden text, metadata</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-ink/10 bg-white py-8">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm text-ink/66 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <p>Book Author Agent Skills</p>
+        <a class="font-medium text-marine hover:text-brass" href="#top" data-lang="en">Back to top</a>
+        <a class="font-medium text-marine hover:text-brass" href="#top" data-lang="id">Kembali ke atas</a>
+      </div>
+    </footer>
+
+    <script>
+      const agents = [
+        ["book-author-orchestrator", "Workflow manager", "Manager workflow"],
+        ["academic-book-intake", "Project brief and intake", "Brief proyek dan intake"],
+        ["academic-source-analyzer", "Source analysis", "Analisis sumber"],
+        ["academic-book-architect", "Book structure design", "Desain struktur buku"],
+        ["academic-outline-builder", "Detailed outline builder", "Penyusun outline detail"],
+        ["academic-chapter-writer", "Academic chapter writer", "Penulis bab akademik"],
+        ["citation-integrity-reviewer", "Citation integrity review", "Review integritas sitasi"],
+        ["rps-to-buku-ajar", "RPS to textbook", "RPS menjadi buku ajar"],
+        ["paper-to-monograf", "Paper to monograph", "Paper menjadi monograf"],
+        ["research-synthesis-to-reference-book", "Research synthesis", "Sintesis riset"],
+        ["academic-book-reviewer", "Academic reviewer", "Reviewer akademik"],
+        ["academic-book-editor", "Academic editor", "Editor akademik"],
+        ["format-export-preparer", "Export preparation", "Persiapan export"],
+        ["book-layout-designer", "Interior layout design", "Desain layout interior"],
+        ["book-cover-designer", "Cover design brief", "Brief desain cover"],
+        ["book-docx-exporter", "Editable DOCX export", "Export DOCX editable"],
+        ["book-pdf-exporter", "Final PDF export", "Export PDF final"],
+        ["book-security-privacy-checker", "Security/privacy guardrail", "Guardrail keamanan/privasi"],
+      ];
+
+      const prompts = {
+        en: `Please install Book Author Agent Skills from this GitHub repository:
+https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+
+Install them as agent skills in this project.
+
+After installation, verify and report:
+1. how many agent skills were installed,
+2. the name of each installed agent,
+3. whether every agent has a SKILL.md file,
+4. whether book-author-orchestrator is installed,
+5. whether book-security-privacy-checker is installed.
+
+Expected total installed agent skills: 18.
+
+Do not overwrite existing agent skills without confirmation.`,
+        id: `Tolong install Book Author Agent Skills dari repository GitHub ini:
+https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+
+Install menjadi agent skills di project ini.
+
+Setelah install, cek dan konfirmasi:
+1. berapa agent skill yang terinstall,
+2. nama setiap agent yang terinstall,
+3. apakah setiap agent punya SKILL.md,
+4. apakah book-author-orchestrator terinstall,
+5. apakah book-security-privacy-checker terinstall.
+
+Total agent skill yang diharapkan: 18.
+
+Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
+      };
+
+      let currentLang = "en";
+      const body = document.body;
+      const btnEn = document.getElementById("btn-en");
+      const btnId = document.getElementById("btn-id");
+      const grid = document.getElementById("agent-grid");
+      const promptEl = document.getElementById("install-prompt");
+      const copyBtn = document.getElementById("copy-install");
+      const copyStatus = document.getElementById("copy-status");
+
+      function renderAgents() {
+        grid.innerHTML = agents
+          .map(([name, en, id]) => {
+            const desc = currentLang === "en" ? en : id;
+            return `<article class="rounded border border-white/10 bg-white/8 p-5">
+              <p class="font-mono text-sm text-brass">${name}</p>
+              <p class="mt-3 text-sm leading-6 text-white/74">${desc}</p>
+            </article>`;
+          })
+          .join("");
+      }
+
+      function setLang(lang) {
+        currentLang = lang;
+        body.classList.toggle("lang-en", lang === "en");
+        body.classList.toggle("lang-id", lang === "id");
+        document.documentElement.lang = lang === "en" ? "en" : "id";
+        btnEn.classList.toggle("tab-active", lang === "en");
+        btnId.classList.toggle("tab-active", lang === "id");
+        promptEl.textContent = prompts[lang];
+        copyStatus.textContent = "";
+        renderAgents();
+      }
+
+      btnEn.addEventListener("click", () => setLang("en"));
+      btnId.addEventListener("click", () => setLang("id"));
+      copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(prompts[currentLang]);
+        copyStatus.textContent = currentLang === "en" ? "Copied to clipboard." : "Disalin ke clipboard.";
+      });
+
+      setLang("en");
+    </script>
+  </body>
+</html>

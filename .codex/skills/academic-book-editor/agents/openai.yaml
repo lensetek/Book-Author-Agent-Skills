@@ -1,0 +1,3 @@
+display_name: Academic Book Editor
+short_description: Reviews academic book drafts for coherence, depth, style, and readiness.
+default_prompt: Review and improve my academic book draft for structure, coherence, and academic quality.

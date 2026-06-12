@@ -1,0 +1,3 @@
+display_name: RPS To Buku Ajar
+short_description: Converts RPS or syllabus material into a textbook plan with CPMK alignment.
+default_prompt: Convert my RPS into a buku ajar outline with CPMK mapping, activities, and assessments.

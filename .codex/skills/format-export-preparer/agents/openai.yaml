@@ -1,0 +1,3 @@
+display_name: Format Export Preparer
+short_description: Prepares academic manuscripts for Markdown, DOCX-ready, or publisher handoff.
+default_prompt: Prepare my academic book manuscript structure for final export or publisher handoff.

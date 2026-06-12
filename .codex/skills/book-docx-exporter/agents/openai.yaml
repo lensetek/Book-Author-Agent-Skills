@@ -1,0 +1,3 @@
+display_name: Book DOCX Exporter
+short_description: Prepares editable DOCX manuscript specs with styles, page setup, headers, footers, and metadata checks.
+default_prompt: Prepare my academic book manuscript for editable DOCX export with styles, page size, headers, footers, and table of contents.

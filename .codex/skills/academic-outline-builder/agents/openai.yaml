@@ -1,0 +1,3 @@
+display_name: Academic Outline Builder
+short_description: Creates detailed academic book tables of contents and chapter plans.
+default_prompt: Build a detailed outline and chapter plan for my academic book.

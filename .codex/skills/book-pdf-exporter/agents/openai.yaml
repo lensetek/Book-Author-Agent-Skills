@@ -1,0 +1,3 @@
+display_name: Book PDF Exporter
+short_description: Prepares final PDF export specs for UNESCO, A5, A4, or custom book sizes.
+default_prompt: Prepare my academic book for final PDF export with page size, print settings, digital settings, and preflight checks.

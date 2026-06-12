@@ -1,0 +1,3 @@
+display_name: Citation Integrity Reviewer
+short_description: Finds unsupported claims, missing citations, and fabricated-reference risks.
+default_prompt: Review this academic draft for citation gaps and source integrity problems.

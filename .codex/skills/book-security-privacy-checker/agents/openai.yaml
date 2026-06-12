@@ -1,0 +1,3 @@
+display_name: Book Security Privacy Checker
+short_description: Checks academic book materials for credentials, personal data, and frontend secret exposure.
+default_prompt: Check this book material or project for credentials, private data, metadata risks, and frontend-exposed secrets.

@@ -1,0 +1,3 @@
+display_name: Originality Integrity Reviewer
+short_description: Reviews manuscripts for originality, author contribution, source integrity, and academic ethics.
+default_prompt: Review this academic book draft for originality, author contribution, source integrity, and ethical readiness before submission.

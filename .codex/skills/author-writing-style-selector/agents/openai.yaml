@@ -1,0 +1,3 @@
+display_name: Author Writing Style Selector
+short_description: Helps authors choose an academic book writing style and creates a reusable style guide.
+default_prompt: Help me choose a writing style for my academic book and create a style guide that other agents can follow.

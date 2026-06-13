@@ -1,0 +1,3 @@
+display_name: Human Revision Assistant
+short_description: Helps authors revise drafts for clarity, originality, specificity, and academic integrity.
+default_prompt: Help me revise this academic book draft so it is clearer, more original, more specific, and ready for human review.

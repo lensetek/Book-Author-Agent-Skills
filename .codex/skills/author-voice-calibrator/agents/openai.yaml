@@ -1,0 +1,3 @@
+display_name: Author Voice Calibrator
+short_description: Builds a voice profile from the author's own sample writing for consistent academic manuscripts.
+default_prompt: Analyze my writing sample and create an author voice profile that other book agents can follow responsibly.

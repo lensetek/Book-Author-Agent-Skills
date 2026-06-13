@@ -36,6 +36,7 @@ Core principles:
 - protect credentials, private data, document metadata, and sensitive research material.
 - use no-key reference sources first: Crossref, arXiv, PubMed/NCBI, Europe PMC, and unauthenticated Semantic Scholar when available.
 - update checks are confirmation-first: the update monitor checks the GitHub repository and asks before download or overwrite.
+- writing style is author-driven: users can choose a style guide, calibrate their own voice, and run integrity-focused revision without attempting to bypass AI detectors.
 
 Export defaults:
 
@@ -50,12 +51,16 @@ Export defaults:
 | --- | --- | --- | --- |
 | `book-author-orchestrator` | Workflow manager for the full academic book process. | Intake, routing, coordination, final checks. | Workflow path, recommended agents, combined output. |
 | `agent-skill-update-monitor` | Checks repository updates. | Compare local skills with GitHub, summarize updates, ask before download/update. | Update status and confirmation prompt. |
+| `author-writing-style-selector` | Selects book writing style. | Offer style options and create reusable style guide. | Style guide and downstream instructions. |
+| `author-voice-calibrator` | Calibrates to the author's own voice. | Analyze permitted writing sample and create voice profile. | Voice profile and revision guidance. |
 | `academic-book-intake` | Clarifies the book project. | Define purpose, audience, discipline, book type, sources, standards. | Project brief and next step. |
 | `academic-source-analyzer` | Analyzes academic source material. | Extract concepts, learning outcomes, findings, methods, gaps, risks. | Source summary and gap list. |
 | `academic-reference-finder` | Finds references without API keys. | Search no-key sources, validate DOI metadata, rank candidates, mark limitations. | Reference candidates and DOI checks. |
 | `academic-book-architect` | Designs the book structure. | Decide textbook, reference book, or monograph structure. | Chapter map and rationale. |
 | `academic-outline-builder` | Builds detailed outlines. | Create table of contents, chapter goals, summaries, figure/table needs. | Complete outline and chapter plan. |
 | `academic-chapter-writer` | Drafts academic chapters. | Write or revise chapters in Indonesian academic style. | Chapter draft and revision notes. |
+| `human-revision-assistant` | Guides human revision. | Improve clarity, specificity, examples, author contribution, and non-generic prose. | Human revision tasks and suggested improvements. |
+| `originality-integrity-reviewer` | Reviews originality and ethics. | Check author contribution, generic patterns, source integrity, disclosure needs. | Originality and integrity findings. |
 | `citation-integrity-reviewer` | Reviews source integrity. | Flag unsupported claims, citation gaps, fabricated-reference risks. | Citation gap list. |
 | `rps-to-buku-ajar` | Converts RPS/course plans into textbooks. | Map CPMK/outcomes, topics, exercises, assignments, assessments. | RPS extraction, CPMK-chapter matrix, textbook outline. |
 | `paper-to-monograf` | Converts focused research into monographs. | Expand problem, state of the art, method, findings, contribution. | Monograph outline and expansion plan. |
@@ -122,17 +127,21 @@ Expected confirmation:
 
 ```text
 Installation completed.
-Total installed agent skills: 20
+Total installed agent skills: 24
 
 Installed agents:
 - book-author-orchestrator
 - agent-skill-update-monitor
+- author-writing-style-selector
+- author-voice-calibrator
 - academic-book-intake
 - academic-source-analyzer
 - academic-reference-finder
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
+- human-revision-assistant
+- originality-integrity-reviewer
 - citation-integrity-reviewer
 - rps-to-buku-ajar
 - paper-to-monograf
@@ -159,6 +168,22 @@ Use book-author-orchestrator. I have an idea for a book about AI for SME marketi
 
 ```text
 Use agent-skill-update-monitor. Check the GitHub repository for updates and ask me before downloading or updating any installed skill.
+```
+
+```text
+Use author-writing-style-selector. Help me choose a writing style for this textbook and create a style guide for all chapter agents.
+```
+
+```text
+Use author-voice-calibrator. Analyze my writing sample and create a voice profile that preserves academic integrity.
+```
+
+```text
+Use human-revision-assistant. Help me revise this chapter so it is clearer, more specific, and grounded in my own examples and contribution.
+```
+
+```text
+Use originality-integrity-reviewer. Review this manuscript for originality, author contribution, source integrity, and academic ethics before submission.
 ```
 
 ```text
@@ -234,6 +259,7 @@ Prinsip utama:
 - menjaga credential, data pribadi, metadata dokumen, dan materi riset sensitif.
 - memakai sumber referensi tanpa API key lebih dulu: Crossref, arXiv, PubMed/NCBI, Europe PMC, dan Semantic Scholar tanpa autentikasi bila tersedia.
 - pengecekan update harus konfirmasi dulu: update monitor mengecek repository GitHub dan bertanya sebelum download atau overwrite.
+- gaya penulisan ditentukan penulis: pengguna bisa memilih style guide, mengkalibrasi suara penulis sendiri, dan menjalankan revisi berorientasi integritas tanpa mencoba mengelabui AI detector.
 
 Default export:
 
@@ -248,12 +274,16 @@ Default export:
 | --- | --- | --- | --- |
 | `book-author-orchestrator` | Manager workflow untuk proses buku akademik lengkap. | Intake, routing, koordinasi, final check. | Jalur kerja, rekomendasi agent, output gabungan. |
 | `agent-skill-update-monitor` | Mengecek update repository. | Membandingkan skill lokal dengan GitHub, merangkum update, meminta konfirmasi sebelum download/update. | Status update dan prompt konfirmasi. |
+| `author-writing-style-selector` | Memilih gaya penulisan buku. | Menawarkan opsi gaya dan membuat style guide reusable. | Style guide dan instruksi downstream. |
+| `author-voice-calibrator` | Mengkalibrasi suara penulis sendiri. | Menganalisis contoh tulisan yang diizinkan dan membuat voice profile. | Voice profile dan panduan revisi. |
 | `academic-book-intake` | Mengklarifikasi proyek buku. | Menentukan tujuan, audiens, disiplin, jenis buku, sumber, standar. | Project brief dan langkah berikutnya. |
 | `academic-source-analyzer` | Menganalisis sumber akademik. | Mengekstrak konsep, CPMK, temuan, metode, gap, risiko. | Ringkasan sumber dan daftar gap. |
 | `academic-reference-finder` | Mencari referensi tanpa API key. | Mencari di sumber no-key, validasi DOI, ranking kandidat, menandai limitasi. | Kandidat referensi dan cek DOI. |
 | `academic-book-architect` | Merancang struktur buku. | Menentukan struktur buku ajar, referensi, atau monograf. | Chapter map dan rationale. |
 | `academic-outline-builder` | Menyusun outline detail. | Membuat daftar isi, tujuan bab, ringkasan, kebutuhan gambar/tabel. | Outline lengkap dan chapter plan. |
 | `academic-chapter-writer` | Menulis bab akademik. | Menulis atau merevisi bab dengan gaya akademik Indonesia. | Draft bab dan catatan revisi. |
+| `human-revision-assistant` | Memandu revisi manusia. | Memperjelas tulisan, menambah kekhususan, contoh, kontribusi penulis, dan mengurangi kesan generik. | Tugas revisi manusia dan saran perbaikan. |
+| `originality-integrity-reviewer` | Mereview orisinalitas dan etika. | Mengecek kontribusi penulis, pola generik, integritas sumber, kebutuhan disclosure. | Temuan orisinalitas dan integritas. |
 | `citation-integrity-reviewer` | Mengecek integritas sumber. | Menandai klaim tanpa sumber, gap sitasi, risiko referensi palsu. | Citation gap list. |
 | `rps-to-buku-ajar` | Mengubah RPS menjadi buku ajar. | Memetakan CPMK, topik, latihan, tugas, asesmen. | Ekstraksi RPS, matriks CPMK-bab, outline buku ajar. |
 | `paper-to-monograf` | Mengubah riset terfokus menjadi monograf. | Mengembangkan problem, state of the art, metode, temuan, kontribusi. | Outline monograf dan rencana ekspansi. |
@@ -318,17 +348,21 @@ Output konfirmasi yang diharapkan:
 
 ```text
 Install selesai.
-Total agent skill terinstall: 20
+Total agent skill terinstall: 24
 
 Daftar agent:
 - book-author-orchestrator
 - agent-skill-update-monitor
+- author-writing-style-selector
+- author-voice-calibrator
 - academic-book-intake
 - academic-source-analyzer
 - academic-reference-finder
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
+- human-revision-assistant
+- originality-integrity-reviewer
 - citation-integrity-reviewer
 - rps-to-buku-ajar
 - paper-to-monograf
@@ -355,6 +389,22 @@ Gunakan book-author-orchestrator. Saya punya ide buku tentang AI untuk pemasaran
 
 ```text
 Gunakan agent-skill-update-monitor. Cek apakah ada update di repository GitHub dan tanya saya dulu sebelum download atau update skill yang terinstall.
+```
+
+```text
+Gunakan author-writing-style-selector. Bantu saya memilih gaya penulisan untuk buku ajar ini dan buat style guide untuk semua agent penulis bab.
+```
+
+```text
+Gunakan author-voice-calibrator. Analisis contoh tulisan saya dan buat voice profile yang tetap menjaga integritas akademik.
+```
+
+```text
+Gunakan human-revision-assistant. Bantu revisi bab ini agar lebih jelas, spesifik, dan berisi contoh serta kontribusi saya sendiri.
+```
+
+```text
+Gunakan originality-integrity-reviewer. Review naskah ini untuk orisinalitas, kontribusi penulis, integritas sumber, dan etika akademik sebelum submission.
 ```
 
 ```text

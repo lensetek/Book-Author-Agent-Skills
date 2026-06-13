@@ -405,6 +405,17 @@
               <span data-lang="en">Replace the placeholder URL with your real repository link. The agent should install the skills, then confirm 24 agents and required core agents.</span>
               <span data-lang="id">Ganti URL placeholder dengan link repository asli. Agent harus install skills, lalu konfirmasi 24 agent dan agent inti yang wajib ada.</span>
             </p>
+            <div class="mt-8">
+              <h3 class="text-lg font-semibold">
+                <span data-lang="en">Compatible agent apps</span>
+                <span data-lang="id">Agent app yang bisa dipakai</span>
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-ink/68">
+                <span data-lang="en">Use any app that can read a GitHub repository or paste a SKILL.md file into its project/system instructions.</span>
+                <span data-lang="id">Gunakan app apa pun yang bisa membaca repository GitHub atau menerima isi SKILL.md sebagai project/system instruction.</span>
+              </p>
+              <div id="agent-app-grid" class="mt-5 grid gap-3 sm:grid-cols-2"></div>
+            </div>
           </div>
           <div class="rounded bg-ink p-5 text-white shadow-soft">
             <div class="mb-4 flex items-center justify-between gap-4">
@@ -532,6 +543,51 @@
         ["book-security-privacy-checker", "Security/privacy guardrail", "Guardrail keamanan/privasi"],
       ];
 
+      const agentApps = [
+        {
+          name: "Codex / OpenAI",
+          url: "https://chatgpt.com/codex",
+          icon: "https://cdn.simpleicons.org/openai/1d2433",
+          en: "Ask Codex to install the repository as project agent skills.",
+          id: "Minta Codex install repository ini sebagai agent skills di project.",
+        },
+        {
+          name: "Claude",
+          url: "https://claude.ai",
+          icon: "https://cdn.simpleicons.org/anthropic/1d2433",
+          en: "Paste SKILL.md into Project Instructions or project knowledge.",
+          id: "Tempel SKILL.md ke Project Instructions atau knowledge project.",
+        },
+        {
+          name: "Antigravity",
+          url: "https://antigravity.google",
+          icon: "https://cdn.simpleicons.org/google/1d2433",
+          en: "Ask the workspace agent to read the repo and install the skills.",
+          id: "Minta workspace agent membaca repo dan install skills.",
+        },
+        {
+          name: "Cursor",
+          url: "https://cursor.com",
+          icon: "https://cdn.simpleicons.org/cursor/1d2433",
+          en: "Use the repo files as agent instructions inside your project.",
+          id: "Gunakan file repo sebagai instruksi agent di project.",
+        },
+        {
+          name: "ChatGPT custom agent",
+          url: "https://chatgpt.com/gpts",
+          icon: "https://cdn.simpleicons.org/openai/1d2433",
+          en: "Paste the relevant SKILL.md into custom instructions.",
+          id: "Tempel SKILL.md yang relevan ke custom instructions.",
+        },
+        {
+          name: "GitHub / manual",
+          url: "https://github.com/lensetek/Book-Author-Agent-Skills",
+          icon: "https://cdn.simpleicons.org/github/1d2433",
+          en: "Download the repository and install the skill folders manually.",
+          id: "Download repository dan install folder skill secara manual.",
+        },
+      ];
+
       const prompts = {
         en: `Please install Book Author Agent Skills from this GitHub repository:
 https://github.com/lensetek/Book-Author-Agent-Skills
@@ -570,6 +626,7 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
       const btnEn = document.getElementById("btn-en");
       const btnId = document.getElementById("btn-id");
       const grid = document.getElementById("agent-grid");
+      const appGrid = document.getElementById("agent-app-grid");
       const promptEl = document.getElementById("install-prompt");
       const copyBtn = document.getElementById("copy-install");
       const copyStatus = document.getElementById("copy-status");
@@ -586,6 +643,21 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
           .join("");
       }
 
+      function renderAgentApps() {
+        appGrid.innerHTML = agentApps
+          .map((app) => {
+            const desc = currentLang === "en" ? app.en : app.id;
+            return `<a href="${app.url}" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 rounded border border-ink/10 bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-brass/40">
+              <img src="${app.icon}" alt="" class="mt-1 h-7 w-7" loading="lazy" />
+              <span>
+                <span class="block font-semibold text-ink">${app.name}</span>
+                <span class="mt-1 block text-sm leading-5 text-ink/68">${desc}</span>
+              </span>
+            </a>`;
+          })
+          .join("");
+      }
+
       function setLang(lang) {
         currentLang = lang;
         body.classList.toggle("lang-en", lang === "en");
@@ -596,6 +668,7 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
         promptEl.textContent = prompts[lang];
         copyStatus.textContent = "";
         renderAgents();
+        renderAgentApps();
       }
 
       btnEn.addEventListener("click", () => setLang("en"));

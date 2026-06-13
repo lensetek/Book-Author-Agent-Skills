@@ -547,7 +547,7 @@
         {
           name: "Codex / OpenAI",
           url: "https://chatgpt.com/codex",
-          icon: "https://cdn.simpleicons.org/openai/1d2433",
+          iconText: "AI",
           en: "Ask Codex to install the repository as project agent skills.",
           id: "Minta Codex install repository ini sebagai agent skills di project.",
         },
@@ -575,7 +575,7 @@
         {
           name: "ChatGPT custom agent",
           url: "https://chatgpt.com/gpts",
-          icon: "https://cdn.simpleicons.org/openai/1d2433",
+          iconText: "AI",
           en: "Paste the relevant SKILL.md into custom instructions.",
           id: "Tempel SKILL.md yang relevan ke custom instructions.",
         },
@@ -647,8 +647,11 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
         appGrid.innerHTML = agentApps
           .map((app) => {
             const desc = currentLang === "en" ? app.en : app.id;
+            const icon = app.icon
+              ? `<img src="${app.icon}" alt="" class="mt-1 h-7 w-7" loading="lazy" />`
+              : `<span class="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded bg-ink text-xs font-bold text-white">${app.iconText}</span>`;
             return `<a href="${app.url}" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 rounded border border-ink/10 bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-brass/40">
-              <img src="${app.icon}" alt="" class="mt-1 h-7 w-7" loading="lazy" />
+              ${icon}
               <span>
                 <span class="block font-semibold text-ink">${app.name}</span>
                 <span class="mt-1 block text-sm leading-5 text-ink/68">${desc}</span>

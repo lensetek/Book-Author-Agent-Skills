@@ -25,7 +25,18 @@ Supported workflows:
 - **Idea to book**: clarify the idea, choose book type, design structure, and build an outline.
 - **RPS/course plan to textbook**: convert a syllabus or course plan into a textbook aligned with CPMK/learning outcomes, objectives, exercises, assignments, and assessments.
 - **Paper/research to reference book or monograph**: expand papers, theses, dissertations, research reports, or literature sets into larger academic books.
-- **Production package**: prepare cover, interior layout, editable DOCX, and final PDF export.
+- **Obsidian Vault Integration**: seamlessly process local Markdown notes, Zettelkasten networks, and literature reviews into structured manuscripts.
+- **Digital Web Reader Output**: export responsive, mobile-first web e-books featuring dark mode, MathJax/KaTeX math rendering, CPMK progress tracking, and interactive exercises.
+- **LaTeX Math & Export Engine**: native support for inline `$...$` / `\(...\)` and block `$$...$$` / `\[...\]` formulas with automated LaTeX $\rightarrow$ DOCX (OMML editable equations) and LaTeX $\rightarrow$ PDF compilation (`pdflatex`/`xelatex`).
+- **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
+- **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
+
+## What's New (v1.1)
+
+- 🧮 **LaTeX Math & Equation Conversion Engine**: Full support for academic mathematical formulas across Markdown, Web Reader (MathJax/KaTeX), DOCX (converted to native Word OMML equations), and PDF compilation.
+- 📓 **Obsidian Vault Integration**: Native support for local Markdown files, YAML metadata, internal links (`[[...]]`), and Zettelkasten literature synthesis.
+- 📱 **Digital Web Reader Edition**: Generate interactive, responsive mobile-first e-book web apps with dark/light themes and collapsible exercise solutions.
+- 🛡️ **Chrome DevTools MCP Integration**: Automated visual QA, page margin preflight checks, mobile responsiveness audits, and real-time security credential leak detection.
 
 Core principles:
 
@@ -42,8 +53,9 @@ Export defaults:
 
 - Default book/PDF size: `UNESCO`.
 - Supported sizes: `UNESCO`, `A5`, `A4`, and `custom`.
-- DOCX is the preferred editable handoff for authors, editors, and publishers.
-- PDF is the final proof/distribution format after layout and DOCX review.
+- DOCX is the preferred editable handoff for authors, editors, and publishers (with native OMML math equation support).
+- PDF is the final proof/distribution format compiled via `pdflatex`/`xelatex` after layout review.
+- Web Reader is the digital responsive distribution format.
 
 ## Agent List
 
@@ -248,7 +260,18 @@ Workflow yang didukung:
 - **Dari ide ke buku**: mematangkan gagasan, memilih jenis buku, merancang struktur, dan membuat outline.
 - **Dari RPS ke buku ajar**: mengubah RPS/silabus menjadi buku ajar yang selaras dengan CPMK, tujuan pembelajaran, latihan, tugas, dan asesmen.
 - **Dari paper/riset ke buku referensi atau monograf**: mengembangkan paper, tesis, disertasi, laporan riset, atau kumpulan literatur menjadi buku akademik.
-- **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, dan PDF final.
+- **Integrasi Vault Obsidian**: memproses catatan lokal Markdown, jaringan Zettelkasten, dan ringkasan pustaka menjadi naskah terstruktur.
+- **Output Digital Web Reader**: mengekspor buku digital web berbasis responsif *mobile-first*, lengkap dengan mode gelap, render rumus MathJax/KaTeX, pelacakan progress CPMK, dan latihan interaktif.
+- **Engine Matematika & Formulasi LaTeX**: dukungan penuh sintaksis matematika `$...$` / `\(...\)` dan `$$...$$` / `\[...\]`, konversi otomatis LaTeX $\rightarrow$ DOCX (persamaan editable OMML Word), serta kompilasi LaTeX $\rightarrow$ PDF (`pdflatex`/`xelatex`).
+- **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
+- **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
+
+## Apa yang Baru (v1.1)
+
+- 🧮 **Engine Matematika & Formulasi LaTeX**: Penulisan formula matematika akademis cantik dan presisi di Markdown, Web Reader (MathJax/KaTeX), DOCX (persamaan interaktif Word OMML), dan PDF.
+- 📓 **Integrasi Vault Obsidian**: Dukungan penuh berkas `.md` lokal, metadata YAML, tautan internal `[[...]]`, dan sintesis catatan Zettelkasten.
+- 📱 **Edisi Digital Web Reader**: Hasilkan aplikasi web membaca buku berbasis *mobile-first*, serasi dengan smartphone/tablet, navigasi cepat, dan mode malam.
+- 🛡️ **Integrasi Chrome DevTools MCP**: Pengujian visual otomatis (*preflight page margin*), audit responsivitas HP, dan deteksi kebocoran kredensial jaringan secara *real-time*.
 
 Prinsip utama:
 
@@ -265,8 +288,9 @@ Default export:
 
 - Ukuran buku/PDF default: `UNESCO`.
 - Ukuran yang didukung: `UNESCO`, `A5`, `A4`, dan `custom`.
-- DOCX adalah format utama untuk editing dan handoff ke penulis/editor/penerbit.
-- PDF adalah format final untuk proof/distribusi setelah layout dan DOCX direview.
+- DOCX adalah format utama untuk editing dan handoff ke penulis/editor/penerbit (dilengkapi persamaan matematika native Word OMML).
+- PDF adalah format final untuk proof/distribusi yang dikompilasi via `pdflatex`/`xelatex` setelah layout direview.
+- Web Reader adalah format distribusi digital interaktif dan responsif mobile.
 
 ## Daftar Agent
 

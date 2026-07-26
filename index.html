@@ -221,7 +221,7 @@
             <div class="mt-5 flex max-w-lg items-center justify-between rounded-lg border border-white/20 bg-ink/80 px-4 py-2.5 backdrop-blur shadow-soft">
               <div class="flex items-center gap-2 overflow-x-auto font-mono text-xs text-brass">
                 <span class="text-white/50">$</span>
-                <code class="font-bold">npx skills add lensetek/Book-Author-Agent-Skills</code>
+                <code class="font-bold">npx skills add https://github.com/lensetek/Book-Author-Agent-Skills</code>
               </div>
               <button id="hero-copy-cli" type="button" class="ml-3 shrink-0 rounded bg-brass/80 px-2.5 py-1 text-xs font-semibold text-white hover:bg-brass transition">
                 Copy
@@ -381,7 +381,7 @@
               </h2>
             </div>
             <div class="flex items-center gap-3">
-              <code class="rounded bg-ink px-3 py-1.5 font-mono text-xs font-semibold text-brass">npx skills add lensetek/Book-Author-Agent-Skills</code>
+              <code class="rounded bg-ink px-3 py-1.5 font-mono text-xs font-semibold text-brass">npx skills add https://github.com/lensetek/Book-Author-Agent-Skills</code>
               <a href="https://github.com/lensetek/Book-Author-Agent-Skills" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded bg-ink px-4 py-2 text-xs font-semibold text-white shadow-soft hover:bg-ink/80">
                 <span>GitHub</span>
               </a>
@@ -521,7 +521,7 @@
                       <span>📋 Copy Command</span>
                     </button>
                   </div>
-                  <pre class="font-mono text-sm sm:text-base text-brass font-bold overflow-x-auto whitespace-pre-wrap"><code>npx skills add lensetek/Book-Author-Agent-Skills</code></pre>
+                  <pre class="font-mono text-sm sm:text-base text-brass font-bold overflow-x-auto whitespace-pre-wrap"><code>npx skills add https://github.com/lensetek/Book-Author-Agent-Skills</code></pre>
                 </div>
                 <p id="copy-cli-status" class="mt-2 text-xs text-brass font-semibold min-h-[1.25rem]"></p>
               </div>
@@ -706,8 +706,8 @@
           name: "CLI / Terminal (npx)",
           url: "#install",
           iconText: "CLI",
-          en: "Run npx skills add lensetek/Book-Author-Agent-Skills in your terminal.",
-          id: "Jalankan npx skills add lensetek/Book-Author-Agent-Skills di terminal Anda.",
+          en: "Run npx skills add https://github.com/lensetek/Book-Author-Agent-Skills in your terminal.",
+          id: "Jalankan npx skills add https://github.com/lensetek/Book-Author-Agent-Skills di terminal Anda.",
         },
         {
           name: "Codex / OpenAI",
@@ -854,7 +854,7 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
 
       if (heroCopyBtn) {
         heroCopyBtn.addEventListener("click", async () => {
-          await navigator.clipboard.writeText("npx skills add lensetek/Book-Author-Agent-Skills");
+          await navigator.clipboard.writeText("npx skills add https://github.com/lensetek/Book-Author-Agent-Skills");
           heroCopyStatus.textContent = currentLang === "en" ? "Command copied!" : "Perintah disalin!";
           setTimeout(() => { heroCopyStatus.textContent = ""; }, 3000);
         });
@@ -862,7 +862,7 @@ Jangan overwrite agent skills yang sudah ada tanpa konfirmasi.`,
 
       if (copyCliBtn) {
         copyCliBtn.addEventListener("click", async () => {
-          await navigator.clipboard.writeText("npx skills add lensetek/Book-Author-Agent-Skills");
+          await navigator.clipboard.writeText("npx skills add https://github.com/lensetek/Book-Author-Agent-Skills");
           copyCliStatus.textContent = currentLang === "en" ? "CLI command copied to clipboard!" : "Perintah CLI disalin ke clipboard!";
           setTimeout(() => { copyCliStatus.textContent = ""; }, 4000);
         });

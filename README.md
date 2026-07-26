@@ -8,15 +8,19 @@ Language: [English](#english) | [Bahasa Indonesia](#bahasa-indonesia)
 
 Book Author Agent Skills is a collection of agent skills for creating **textbooks**, **reference books**, and **monographs** from ideas, RPS/course plans, research papers, or academic source collections. It uses an **orchestrator + specialist agents** pattern: call the orchestrator for an end-to-end workflow, or call a specialist directly for a narrow task.
 
-## GitHub Link
+## GitHub Link & CLI Install
 
-Use your repository link when asking an agent to install the skills:
+Install via **`npx skills`** CLI:
+
+```bash
+npx skills add lensetek/Book-Author-Agent-Skills
+```
+
+Or copy the GitHub repository URL when prompting an agent:
 
 ```text
 https://github.com/lensetek/Book-Author-Agent-Skills
 ```
-
-Replace the link above with the actual GitHub repository URL.
 
 ## Description
 
@@ -28,15 +32,22 @@ Supported workflows:
 - **Obsidian Vault Integration**: seamlessly process local Markdown notes, Zettelkasten networks, and literature reviews into structured manuscripts.
 - **Digital Web Reader Output**: export responsive, mobile-first web e-books featuring dark mode, MathJax/KaTeX math rendering, CPMK progress tracking, and interactive exercises.
 - **LaTeX Math & Export Engine**: native support for inline `$...$` / `\(...\)` and block `$$...$$` / `\[...\]` formulas with automated LaTeX $\rightarrow$ DOCX (OMML editable equations) and LaTeX $\rightarrow$ PDF compilation (`pdflatex`/`xelatex`).
+- **Verbatim Evidence Grounding & Verification**: constructed paraphrased synthesis in chapters paired with background verbatim snippet extraction from OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
+- **HITL Book Author Checklist**: 5-phase interactive author approval gates (`hitl_book_checklist.md`).
+- **Python CLI Helper Infrastructure**: zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), and CPMK matrix building (`build_cpmk_matrix.py`).
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
 
 ## What's New (v1.1)
 
+- 🛡️ **Verbatim Evidence Grounding & Citation Audit**: Writes fluent, constructed academic prose (*paraphrased synthesis*) while automatically fetching verbatim source snippets from OpenAlex, Crossref, and PubMed to build a 100% hallucination-free audit trail (`evidence_grounding_matrix.md`).
+- 📋 **HITL Book Author Checklist (`hitl_book_checklist.md`)**: Enforces multi-phase author approval gates across Intake, CPMK Architecture, Chapter Drafting, Citation Verification, and Final Layout/Export.
+- ⚡ **Standalone Python CLI Helpers**: Zero-API-key DOI validation (`validate_references.py`), RPS syllabus parser (`parse_rps.py`), and CPMK-to-Chapter matrix builder (`build_cpmk_matrix.py`).
+- 🔗 **Research-to-Book Workflow Bridge**: Directly imports research outputs (SotA matrices, hypothesis testing, literature reviews) into monograph and reference book expansion pipelines.
 - 🧮 **LaTeX Math & Equation Conversion Engine**: Full support for academic mathematical formulas across Markdown, Web Reader (MathJax/KaTeX), DOCX (converted to native Word OMML equations), and PDF compilation.
 - 📓 **Obsidian Vault Integration**: Native support for local Markdown files, YAML metadata, internal links (`[[...]]`), and Zettelkasten literature synthesis.
 - 📱 **Digital Web Reader Edition**: Generate interactive, responsive mobile-first e-book web apps with dark/light themes and collapsible exercise solutions.
-- 🛡️ **Chrome DevTools MCP Integration**: Automated visual QA, page margin preflight checks, mobile responsiveness audits, and real-time security credential leak detection.
+- 🚀 **`npx skills add` CLI Installer Support**: One-command installation via `npx skills add lensetek/Book-Author-Agent-Skills`.
 
 Core principles:
 
@@ -243,15 +254,19 @@ Every workflow must run security and privacy checks at the beginning and at the 
 
 Book Author Agent Skills adalah kumpulan agent skills untuk membuat **buku ajar**, **buku referensi**, dan **monograf** dari ide, RPS, paper penelitian, atau kumpulan sumber akademik. Paket ini memakai pola **orchestrator + specialist agents**: panggil orchestrator untuk workflow lengkap, atau panggil specialist untuk tugas spesifik.
 
-## Link GitHub
+## Link GitHub & Install CLI
 
-Gunakan link repository ketika meminta agent menginstall skills:
+Install melalui CLI **`npx skills`**:
+
+```bash
+npx skills add lensetek/Book-Author-Agent-Skills
+```
+
+Atau gunakan link repository saat meminta agent meng-install skills:
 
 ```text
 https://github.com/lensetek/Book-Author-Agent-Skills
 ```
-
-Ganti link di atas dengan URL repository GitHub yang sebenarnya.
 
 ## Deskripsi
 
@@ -263,15 +278,22 @@ Workflow yang didukung:
 - **Integrasi Vault Obsidian**: memproses catatan lokal Markdown, jaringan Zettelkasten, dan ringkasan pustaka menjadi naskah terstruktur.
 - **Output Digital Web Reader**: mengekspor buku digital web berbasis responsif *mobile-first*, lengkap dengan mode gelap, render rumus MathJax/KaTeX, pelacakan progress CPMK, dan latihan interaktif.
 - **Engine Matematika & Formulasi LaTeX**: dukungan penuh sintaksis matematika `$...$` / `\(...\)` dan `$$...$$` / `\[...\]`, konversi otomatis LaTeX $\rightarrow$ DOCX (persamaan editable OMML Word), serta kompilasi LaTeX $\rightarrow$ PDF (`pdflatex`/`xelatex`).
+- **Verbatim Evidence Grounding & Verifikasi Faktual**: penulisan bab terkonstruksi (*paraphrased synthesis*) yang dipadukan dengan penarikan kutipan verbatim asli dari OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
+- **HITL Book Author Checklist**: gerbang persetujuan penulis 5-fase interaktif (`hitl_book_checklist.md`).
+- **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), dan pembentukan matriks CPMK (`build_cpmk_matrix.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
 
 ## Apa yang Baru (v1.1)
 
+- 🛡️ **Verbatim Evidence Grounding & Audit Sitasi**: Menulis draf bab dalam paragraf akademis yang mengalir (*paraphrased synthesis*) sambil otomatis menarik kutipan verbatim dari OpenAlex, Crossref, dan PubMed untuk membuat matriks audit 100% faktual bebas halusinasi (`evidence_grounding_matrix.md`).
+- 📋 **HITL Book Author Checklist (`hitl_book_checklist.md`)**: Menegakkan gerbang persetujuan penulis multi-fase dari Intake, Arsitektur CPMK, Draf Bab, Verifikasi Sitasi, hingga Layout/Export Final.
+- ⚡ **Standalone Python CLI Helpers**: Verifikasi DOI tanpa API key (`validate_references.py`), parser silabus RPS (`parse_rps.py`), dan pembuat matriks CPMK-ke-Bab (`build_cpmk_matrix.py`).
+- 🔗 **Jembatan Workflow Riset-ke-Buku**: Mengimpor secara langsung luaran riset (matriks SotA, pengujian hipotesis, ulasan literatur) ke pipeline ekspansi monograf dan buku referensi.
 - 🧮 **Engine Matematika & Formulasi LaTeX**: Penulisan formula matematika akademis cantik dan presisi di Markdown, Web Reader (MathJax/KaTeX), DOCX (persamaan interaktif Word OMML), dan PDF.
 - 📓 **Integrasi Vault Obsidian**: Dukungan penuh berkas `.md` lokal, metadata YAML, tautan internal `[[...]]`, dan sintesis catatan Zettelkasten.
 - 📱 **Edisi Digital Web Reader**: Hasilkan aplikasi web membaca buku berbasis *mobile-first*, serasi dengan smartphone/tablet, navigasi cepat, dan mode malam.
-- 🛡️ **Integrasi Chrome DevTools MCP**: Pengujian visual otomatis (*preflight page margin*), audit responsivitas HP, dan deteksi kebocoran kredensial jaringan secara *real-time*.
+- 🚀 **Dukungan CLI Installer `npx skills add`**: Instalasi cepat satu perintah melalui `npx skills add lensetek/Book-Author-Agent-Skills`.
 
 Prinsip utama:
 

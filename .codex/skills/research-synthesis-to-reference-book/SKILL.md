@@ -33,7 +33,7 @@ Output:
 ## Process
 
 1. Screen for private, confidential, or unpublished sensitive data.
-2. Cluster sources by theme, theory, method, context, or findings.
+2. Cluster sources or import pre-built synthesis matrices (`sota_matrix.md`, literature notes, research gap maps) directly from research workflow outputs.
 3. Identify consensus, disagreement, gaps, and trends.
 4. Build thematic chapters around synthesis, not individual papers.
 5. Suggest comparison tables or diagrams where useful.

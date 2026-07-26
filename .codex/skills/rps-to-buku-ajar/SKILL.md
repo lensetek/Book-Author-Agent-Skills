@@ -35,11 +35,12 @@ Output:
 ## Process
 
 1. Screen for private student or lecturer data.
-2. Extract course identity, description, CPMK/sub-CPMK, weekly topics, references, and assessments.
-3. Group topics into chapters based on concept progression.
-4. Map each chapter to CPMK/sub-CPMK.
-5. Add learning objectives, key concepts, examples, summaries, exercises, assignments, and assessment prompts.
-6. Mark missing references and weak alignment.
+2. Execute `python .codex/skills/scripts/parse_rps.py "<rps_file_or_text>"` to programmatically extract course identity, description, CPMK/sub-CPMK, weekly topics, references, and assessments into structured JSON.
+3. Execute `python .codex/skills/scripts/build_cpmk_matrix.py "<parsed_json>"` to generate `cpmk_matrix.md`.
+4. Group topics into chapters based on concept progression.
+5. Map each chapter to CPMK/sub-CPMK.
+6. Add learning objectives, key concepts, examples, summaries, exercises, assignments, and assessment prompts.
+7. Mark missing references and weak alignment.
 
 ## Rules
 

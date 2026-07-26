@@ -33,7 +33,7 @@ Output:
 ## Process
 
 1. Screen for confidential data, respondent identities, and unpublished sensitive findings.
-2. Extract problem, theory, method, data, findings, contribution, limitations, and references.
+2. Extract or import research artifacts (problem, theory, SotA matrices, hypothesis testing results, data science code/tables, findings, contribution, limitations, and references) directly from research workflow outputs.
 3. Identify what can become a chapter and what needs expansion.
 4. Build a focused monograph structure.
 5. Separate original findings from broader interpretation.

@@ -32,14 +32,16 @@ Output:
 ## Process
 
 1. Check source notes for sensitive data and unsupported claims.
-2. Draft with Indonesian academic tone.
-3. Keep claims traceable to source material.
+2. Draft with Indonesian academic tone using **constructed paraphrased synthesis** (never raw copy-pasting from sources).
+3. Keep claims traceable to source material. Trigger `python .codex/skills/scripts/fetch_evidence_snippet.py "<claim_text>" "<doi>"` to extract verbatim abstract/text snippets from OpenAlex/Crossref/PubMed and record them into `evidence_grounding_matrix.md` for background factual auditing.
 4. Add transitions from previous/to next chapter if context is available.
 5. End with book-type-appropriate closing: summary/exercises, synthesis implications, or contribution/limitations.
 
 ## Rules
 
 - Do not invent citations.
+- Draft text in fluent, constructed academic prose (*paraphrased synthesis*). Never copy-paste raw text from sources.
+- Record verbatim evidence snippets into `evidence_grounding_matrix.md` as an audit trail for factual accuracy.
 - Use `[perlu sitasi]` for claims that need evidence.
 - For buku ajar, teach progressively and include examples when useful.
 - For monograf, keep the argument focused on the research contribution.

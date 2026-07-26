@@ -31,6 +31,8 @@ Output:
 ## Review Rules
 
 - Never create fake references.
+- Programmatically validate all DOIs, author names, publication years, and titles by executing `python .codex/skills/scripts/validate_references.py "<doi_list_json>"`.
+- Cross-reference manuscript claims against `evidence_grounding_matrix.md` to ensure every claim is grounded in verbatim source snippets from OpenAlex/Crossref/PubMed.
 - Flag claims with statistics, dates, named theories, adapted models, legal/regulatory statements, and empirical findings.
 - Distinguish missing citation from weak explanation.
 - If bibliography details are incomplete, mark `[detail referensi perlu dilengkapi]`.

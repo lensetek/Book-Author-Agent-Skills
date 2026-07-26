@@ -50,7 +50,7 @@ Output:
 3. Choose no-key sources by discipline.
 4. Prefer metadata-rich results with DOI, year, venue, authors, and abstract.
 5. Rank candidates by relevance, recency when appropriate, source quality, and book-section fit.
-6. Send DOI/metadata validation needs to Crossref.
+6. Execute `python .codex/skills/scripts/validate_references.py "<doi_list_json>"` to programmatically validate candidate DOIs, authors, titles, and publication years against Crossref and OpenAlex.
 7. Mark anything uncertain instead of inventing details.
 
 ## Rules

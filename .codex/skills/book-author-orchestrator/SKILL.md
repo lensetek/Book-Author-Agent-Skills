@@ -27,7 +27,16 @@ Start by identifying the source path and target book type. If the user has not p
 - required standard: campus, publisher, accreditation, or grant output,
 - desired output for this turn: brief, style guide, voice profile, references, outline, chapter, revision, originality review, review, edit, cover, layout, DOCX, PDF, or final package.
 
+At project initiation, generate and maintain `hitl_book_checklist.md` to track multi-phase author approval gates:
+1. **Phase 1: Project Brief & Intake Approval**
+2. **Phase 2: Book Architecture & CPMK/Outline Approval**
+3. **Phase 3: Chapter Draft & Paraphrased Synthesis Review**
+4. **Phase 4: Programmatic Citation Grounding & Verbatim Audit Approval**
+5. **Phase 5: Final Layout, DOCX, & PDF Export Review**
+
 Before processing content, perform a security/privacy scan. If the input includes credentials, API keys, tokens, private student data, respondent identities, unpublished sensitive data, or frontend-exposed secrets, stop and ask the user to sanitize or approve a redacted workflow.
+
+Execute helper Python scripts (`validate_references.py`, `fetch_evidence_snippet.py`, `parse_rps.py`, `build_cpmk_matrix.py`) located under `.codex/skills/scripts/` to accelerate parsing, reference validation, and verbatim evidence auditing deterministically without bloating LLM context.
 
 ## Agent Roles
 

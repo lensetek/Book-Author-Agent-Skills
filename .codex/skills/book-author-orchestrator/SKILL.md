@@ -1,6 +1,6 @@
 ---
 name: book-author-orchestrator
-description: Use as the manager workflow for transforming an idea, RPS/course plan, research paper, thesis notes, or research corpus into an Indonesian academic book: buku ajar, buku referensi, or monograf. Routes work to specialist academic book agents that can also be called directly by Codex or any external agent system.
+description: "Use as the manager workflow for transforming an idea, RPS/course plan, research paper, thesis notes, or research corpus into an Indonesian academic book (buku ajar, buku referensi, or monograf). Routes work to specialist academic book agents that can also be called directly by Codex or any external agent system."
 metadata:
   short-description: Build Indonesian academic books from ideas, RPS, or research papers
 ---

@@ -1,6 +1,6 @@
 ---
 name: academic-outline-builder
-description: Use to create a detailed table of contents and chapter-by-chapter plan for Indonesian academic books: buku ajar, buku referensi, or monograf.
+description: "Use to create a detailed table of contents and chapter-by-chapter plan for Indonesian academic books (buku ajar, buku referensi, or monograf)."
 metadata:
   short-description: Build academic book outlines and chapter plans
 ---

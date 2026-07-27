@@ -72,7 +72,10 @@ When the user specifies a target publisher or asks for recommendations, apply or
 ## Process
 
 1. Check for sensitive metadata or private data in sample content.
-2. Confirm target publisher or preset (default to **PT. Asadel Liamsindo Teknologi** for ID and **Asadel Publisher** for INTL unless specified otherwise).
+2. Automatically select the primary publisher preset based on conversation context:
+   - **Indonesian Discussion / Context**: Apply **PT. Asadel Liamsindo Teknologi** preset (UNESCO 15.5x23 cm / B5, Georgia/Inter typography, CPMK & exercise callout boxes).
+   - **International Discussion / Context**: Apply **Asadel Publisher** preset (Royal / US Trade 6x9 in / B5, Palatino/Inter typography, Dual Open Access Web Reader & Print Proof PDF).
+   - Apply secondary publisher presets (UI Publishing, Deepublish, Springer, Elsevier) if explicitly requested.
 3. Confirm page size; default to `UNESCO` (15.5 x 23 cm) for ID or `Royal/US Trade` for INTL.
 4. Design the hierarchy for chapter title, section headings, body text, captions, and notes.
 5. Define header/footer patterns, including running title and page number placement.

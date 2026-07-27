@@ -43,6 +43,7 @@ Output:
 
 ## Rules
 
+- **Default Text Alignment**: ALL body text paragraphs in generated DOCX files and export specifications MUST use **Justified (Rata Kanan-Kiri)** alignment (`alignment: justify`) by default. Headings, captions, and callout titles maintain their specified design alignment.
 - DOCX is the preferred editable handoff format for authors, editors, and publishers.
 - Mark missing dimensions as `[exact size needed for technical export]`.
 - Do not silently remove unresolved citation gaps.

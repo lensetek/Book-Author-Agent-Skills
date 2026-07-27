@@ -42,6 +42,7 @@ Output:
 
 ## Rules
 
+- **Default Text Alignment**: ALL body text paragraphs in generated PDF files, LaTeX settings, and export specifications MUST use **Justified (Rata Kanan-Kiri)** alignment (`\justifying` / `align: justify`) by default.
 - PDF is the final distribution/proof format, not the preferred editing format.
 - Use DOCX for editable review before PDF whenever possible.
 - Ask for exact dimensions when `UNESCO` or custom size must become a technical export.

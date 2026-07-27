@@ -84,6 +84,7 @@ When the user specifies a target publisher or asks for recommendations, apply or
 
 ## Rules
 
+- **Default Text Alignment**: ALL body paragraphs in generated layouts, DOCX files, and PDF specs MUST use **Justified (Rata Kanan-Kiri)** alignment by default (`alignment: justify` / `\justifying`).
 - Prioritize readability over decoration.
 - Keep academic pages clean and consistent.
 - For buku ajar, include styles for learning objectives, exercises, assignments, and summaries.

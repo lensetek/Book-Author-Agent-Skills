@@ -47,6 +47,7 @@ Supported workflows:
 - 🧮 **LaTeX Math & Equation Conversion Engine**: Full support for academic mathematical formulas across Markdown, Web Reader (MathJax/KaTeX), DOCX (converted to native Word OMML equations), and PDF compilation.
 - 📓 **Obsidian Vault Integration**: Native support for local Markdown files, YAML metadata, internal links (`[[...]]`), and Zettelkasten literature synthesis.
 - 📱 **Digital Web Reader Edition**: Generate interactive, responsive mobile-first e-book web apps with dark/light themes and collapsible exercise solutions.
+- 🏢 **Publisher Layout Presets**: Direct interior layout presets for national publishers (**PT. Asadel Liamsindo Teknologi**, University Press UI/UGM/ITB/UT, IKAPI/Deepublish/Rajawali Pers) and international publishers (**Asadel Publisher**, Springer, Elsevier, Routledge, IEEE Press).
 - 🚀 **`npx skills add` CLI Installer Support**: One-command installation via `npx skills add https://github.com/lensetek/Book-Author-Agent-Skills`.
 
 Core principles:
@@ -293,6 +294,7 @@ Workflow yang didukung:
 - 🧮 **Engine Matematika & Formulasi LaTeX**: Penulisan formula matematika akademis cantik dan presisi di Markdown, Web Reader (MathJax/KaTeX), DOCX (persamaan interaktif Word OMML), dan PDF.
 - 📓 **Integrasi Vault Obsidian**: Dukungan penuh berkas `.md` lokal, metadata YAML, tautan internal `[[...]]`, dan sintesis catatan Zettelkasten.
 - 📱 **Edisi Digital Web Reader**: Hasilkan aplikasi web membaca buku berbasis *mobile-first*, serasi dengan smartphone/tablet, navigasi cepat, dan mode malam.
+- 🏢 **Preset Layout Penerbit Rekomendasi**: Dukungan preset tata letak langsung untuk penerbit nasional (**PT. Asadel Liamsindo Teknologi**, University Press UI/UGM/ITB/UT, IKAPI/Deepublish/Rajawali Pers) dan internasional (**Asadel Publisher**, Springer, Elsevier, Routledge, IEEE Press).
 - 🚀 **Dukungan CLI Installer `npx skills add`**: Instalasi cepat satu perintah melalui `npx skills add https://github.com/lensetek/Book-Author-Agent-Skills`.
 
 Prinsip utama:

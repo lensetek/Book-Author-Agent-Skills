@@ -36,7 +36,7 @@ At project initiation, generate and maintain `hitl_book_checklist.md` to track m
 
 Before processing content, perform a security/privacy scan. If the input includes credentials, API keys, tokens, private student data, respondent identities, unpublished sensitive data, or frontend-exposed secrets, stop and ask the user to sanitize or approve a redacted workflow.
 
-Execute helper Python scripts (`validate_references.py`, `fetch_evidence_snippet.py`, `parse_rps.py`, `build_cpmk_matrix.py`) located under `.codex/skills/scripts/` to accelerate parsing, reference validation, and verbatim evidence auditing deterministically without bloating LLM context.
+Execute helper Python scripts (`validate_references.py`, `fetch_evidence_snippet.py`, `parse_rps.py`, `build_cpmk_matrix.py`, `graphify_harness.py`) located under `.codex/skills/scripts/` to accelerate parsing, reference validation, verbatim evidence auditing, and project-isolated knowledge graph indexing deterministically without bloating LLM context.
 
 ## Agent Roles
 
@@ -57,6 +57,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 - **rps-to-buku-ajar**: convert RPS into buku ajar plan with pedagogy elements.
 - **paper-to-monograf**: convert one paper or research project into monograph architecture.
 - **research-synthesis-to-reference-book**: synthesize multiple sources into a buku referensi.
+- **graphify-knowledge-graph**: index and query project-bound knowledge graphs (Obsidian Zettelkasten, CPMK trees, paper collections, codebase ASTs) with 100% project-level data isolation.
 - **academic-book-reviewer**: independently review academic substance, book-type fit, contribution, pedagogy, novelty, and publication readiness.
 - **academic-book-editor**: edit coherence, flow, terminology, repetition, style, readability, and academic tone.
 - **format-export-preparer**: prepare final Markdown or DOCX-ready structure.

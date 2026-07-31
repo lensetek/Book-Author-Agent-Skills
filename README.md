@@ -33,10 +33,16 @@ Supported workflows:
 - **Digital Web Reader Output**: export responsive, mobile-first web e-books featuring dark mode, MathJax/KaTeX math rendering, CPMK progress tracking, and interactive exercises.
 - **LaTeX Math & Export Engine**: native support for inline `$...$` / `\(...\)` and block `$$...$$` / `\[...\]` formulas with automated LaTeX $\rightarrow$ DOCX (OMML editable equations) and LaTeX $\rightarrow$ PDF compilation (`pdflatex`/`xelatex`).
 - **Verbatim Evidence Grounding & Verification**: constructed paraphrased synthesis in chapters paired with background verbatim snippet extraction from OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
+- **Graphify Knowledge Graph Harness**: project-bound local knowledge graph indexing (`graphify_harness.py` & `.graphify/`) for Obsidian Zettelkasten networks, CPMK prerequisite chains, and paper collections with 100% multi-project data isolation.
 - **HITL Book Author Checklist**: 5-phase interactive author approval gates (`hitl_book_checklist.md`).
-- **Python CLI Helper Infrastructure**: zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), and CPMK matrix building (`build_cpmk_matrix.py`).
+- **Python CLI Helper Infrastructure**: zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), CPMK matrix building (`build_cpmk_matrix.py`), and project-isolated graph indexing (`graphify_harness.py`).
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
+
+## What's New (v1.2)
+
+- 🕸️ **Graphify Project-Isolated Knowledge Graph Harness**: Convert Obsidian Vaults, Zettelkasten networks, CPMK prerequisite trees, and paper collections into queryable local knowledge graphs (`graph.json` / `graph.html`) with 100% strict multi-project data isolation.
+- ⚡ **Standalone Python Graphify Helper (`graphify_harness.py`)**: Enables deterministic AST indexing, concept search, neighbor traversal, shortest-path calculation, and auto `.gitignore` injection without cloud server dependencies or API key exposure.
 
 ## What's New (v1.1)
 
@@ -89,6 +95,7 @@ Export defaults:
 | `rps-to-buku-ajar` | Converts RPS/course plans into textbooks. | Map CPMK/outcomes, topics, exercises, assignments, assessments. | RPS extraction, CPMK-chapter matrix, textbook outline. |
 | `paper-to-monograf` | Converts focused research into monographs. | Expand problem, state of the art, method, findings, contribution. | Monograph outline and expansion plan. |
 | `research-synthesis-to-reference-book` | Turns literature sets into reference books. | Cluster papers, compare theories/findings, synthesize themes. | Cluster map, synthesis matrix, reference book outline. |
+| `graphify-knowledge-graph` | Indexes and queries project knowledge graphs. | Build AST graphs, query neighbors, shortest paths, Zettelkasten networks, and CPMK trees with project isolation. | Project-bound `graph.json`, `graph.html`, `GRAPH_REPORT.md`, and query results. |
 | `academic-book-reviewer` | Reviews academic substance and readiness. | Check contribution, book-type fit, structure, pedagogy, novelty, readiness. | Academic review findings and required revisions. |
 | `academic-book-editor` | Edits academic manuscript quality. | Check coherence, flow, terminology, repetition, tone, readability. | Editorial findings and revision plan. |
 | `format-export-preparer` | Prepares final manuscript structure. | Build front matter, body, back matter, glossary, bibliography. | Markdown/DOCX-ready structure. |
@@ -280,10 +287,16 @@ Workflow yang didukung:
 - **Output Digital Web Reader**: mengekspor buku digital web berbasis responsif *mobile-first*, lengkap dengan mode gelap, render rumus MathJax/KaTeX, pelacakan progress CPMK, dan latihan interaktif.
 - **Engine Matematika & Formulasi LaTeX**: dukungan penuh sintaksis matematika `$...$` / `\(...\)` dan `$$...$$` / `\[...\]`, konversi otomatis LaTeX $\rightarrow$ DOCX (persamaan editable OMML Word), serta kompilasi LaTeX $\rightarrow$ PDF (`pdflatex`/`xelatex`).
 - **Verbatim Evidence Grounding & Verifikasi Faktual**: penulisan bab terkonstruksi (*paraphrased synthesis*) yang dipadukan dengan penarikan kutipan verbatim asli dari OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
+- **Graphify Knowledge Graph Harness**: indeksasi graf pengetahuan lokal terisolasi per-proyek (`graphify_harness.py` & `.graphify/`) untuk jaringan Zettelkasten Obsidian, urutan prasyarat CPMK, dan kumpulan paper dengan 100% isolasi data.
 - **HITL Book Author Checklist**: gerbang persetujuan penulis 5-fase interaktif (`hitl_book_checklist.md`).
-- **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), dan pembentukan matriks CPMK (`build_cpmk_matrix.py`).
+- **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
+
+## Apa yang Baru (v1.2)
+
+- 🕸️ **Graphify Project-Isolated Knowledge Graph Harness**: Mengonversi Vault Obsidian, jaringan Zettelkasten, pohon prasyarat CPMK, dan kumpulan paper menjadi *knowledge graph* lokal yang dapat di-query (`graph.json` / `graph.html`) dengan isolasi data antar-proyek 100% aman.
+- ⚡ **Standalone Python Graphify Helper (`graphify_harness.py`)**: Memungkinkan indeksasi AST deterministik, pencarian konsep, penelusuran *neighbors*, kalkulasi *shortest-path*, dan injeksi otomatis `.gitignore` tanpa ketergantungan server cloud atau eksposur kunci API.
 
 ## Apa yang Baru (v1.1)
 
@@ -336,6 +349,7 @@ Default export:
 | `rps-to-buku-ajar` | Mengubah RPS menjadi buku ajar. | Memetakan CPMK, topik, latihan, tugas, asesmen. | Ekstraksi RPS, matriks CPMK-bab, outline buku ajar. |
 | `paper-to-monograf` | Mengubah riset terfokus menjadi monograf. | Mengembangkan problem, state of the art, metode, temuan, kontribusi. | Outline monograf dan rencana ekspansi. |
 | `research-synthesis-to-reference-book` | Mengubah kumpulan literatur menjadi buku referensi. | Mengelompokkan paper, membandingkan teori/temuan, menyintesis tema. | Cluster map, synthesis matrix, outline buku referensi. |
+| `graphify-knowledge-graph` | Mengindeks dan meng-query graf pengetahuan proyek. | Membuat graf AST, query neighbors, shortest path, jaringan Zettelkasten, dan pohon CPMK dengan isolasi proyek. | File terisolasi `graph.json`, `graph.html`, `GRAPH_REPORT.md`, dan hasil query. |
 | `academic-book-reviewer` | Mereview substansi dan kelayakan akademik. | Mengecek kontribusi, kesesuaian jenis buku, struktur, pedagogi, novelty, readiness. | Temuan review akademik dan revisi wajib. |
 | `academic-book-editor` | Mengedit kualitas naskah akademik. | Mengecek koherensi, flow, istilah, repetisi, tone, keterbacaan. | Editorial findings dan rencana revisi. |
 | `format-export-preparer` | Menyiapkan struktur naskah final. | Membuat front matter, body, back matter, glosarium, bibliografi. | Struktur Markdown/DOCX-ready. |

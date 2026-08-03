@@ -85,6 +85,10 @@ When the user specifies a target publisher or asks for recommendations, apply or
 ## Rules
 
 - **Default Text Alignment**: ALL body paragraphs in generated layouts, DOCX files, and PDF specs MUST use **Justified (Rata Kanan-Kiri)** alignment by default (`alignment: justify` / `\justifying`).
+- **Chapter Opener Layout**: Every new chapter MUST start on a **Recto (Odd)** page with `100-120pt` Space Before (`~4 cm` top offset drop), a 2-tier Chapter Number & Title hierarchy, and different first page header (running title hidden).
+- **Paragraph Indentation**: Paragraf pertama tepat di bawah judul bab/subbab **TIDAK memakai indentasi** (*No First-Line Indent*). Paragraf berikutnya memakai *First-Line Indent* sebesar `0.63 cm` (`0.25 in`).
+- **Table Formatting**: Use APA 3-Line table formatting by default (horizontal top, header, and bottom borders only; NO vertical borders).
+- **Widow & Orphan Control**: Enforce widow and orphan prevention and `keep_with_next` on all headings.
 - Prioritize readability over decoration.
 - Keep academic pages clean and consistent.
 - For buku ajar, include styles for learning objectives, exercises, assignments, and summaries.

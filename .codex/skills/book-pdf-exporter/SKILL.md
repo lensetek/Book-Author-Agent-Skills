@@ -34,15 +34,18 @@ Output:
 ## Process
 
 1. Run final security/privacy and metadata check.
-2. Confirm final page size; default to `UNESCO`.
-3. Validate that layout, headers/footers, page numbers, captions, and bibliography are complete.
-4. Separate print PDF needs from digital PDF needs.
-5. Check whether cover PDF and interior PDF need separate export specs.
-6. Produce a final preflight checklist.
+2. Confirm final publisher preset and page size; default to `PT. Asadel Liamsindo Teknologi` (UNESCO 15.5x23 cm) for ID or `Asadel Publisher` (Royal 15.6x23.4 cm) for INTL. Supports popular presets (University Press, IKAPI, Springer, Elsevier).
+3. Validate that DOCX field codes for Table of Contents (`TOC \o "1-3" \h \z \u`) are updated and resolved prior to PDF export.
+4. Verify that Chapter Openers begin on Recto (Odd) pages with 120pt Space Before and hidden running headers.
+5. Separate print PDF needs (PDF/X-1a, 300 DPI, mirror margins, bleed) from digital PDF needs (interactive bookmarks, hyperlinked TOC, web reader).
+6. Check whether cover PDF and interior PDF need separate export specs.
+7. Produce a final preflight checklist.
 
 ## Rules
 
 - **Default Text Alignment**: ALL body text paragraphs in generated PDF files, LaTeX settings, and export specifications MUST use **Justified (Rata Kanan-Kiri)** alignment (`\justifying` / `align: justify`) by default.
+- **TOC Preflight**: Ensure Microsoft Word TOC field codes or LaTeX `\tableofcontents` are compiled twice to ensure 100% accurate page numbers.
+- **Recto Page Alignment**: Enforce odd-page chapter starts (`\cleardoublepage` in LaTeX / Section Break Odd Page in DOCX).
 - PDF is the final distribution/proof format, not the preferred editing format.
 - Use DOCX for editable review before PDF whenever possible.
 - Ask for exact dimensions when `UNESCO` or custom size must become a technical export.

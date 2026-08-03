@@ -39,6 +39,11 @@ Supported workflows:
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
 
+## What's New (v1.3)
+
+- 📑 **Native Word TOC & Automated Publisher-Grade Formatting (`generate_standard_docx.py`)**: Direct python generator for Microsoft Word `.docx` with built-in Word XML Field Codes (`TOC \o "1-3" \h \z \u`) ensuring dynamic page numbers, dot leaders, and zero manual TOC regeneration.
+- 📖 **Recto/Verso Chapter Opener Layout Engine**: Enforces odd-page chapter starts, 120pt Space Before chapter titles, 2-tier chapter headings, no-indent first paragraphs, and APA 3-line table formatting across all publisher presets (**PT. Asadel Liamsindo Teknologi**, **Asadel Publisher**, University Press, IKAPI, Springer/Elsevier).
+
 ## What's New (v1.2)
 
 - 🕸️ **Graphify Project-Isolated Knowledge Graph Harness**: Convert Obsidian Vaults, Zettelkasten networks, CPMK prerequisite trees, and paper collections into queryable local knowledge graphs (`graph.json` / `graph.html`) with 100% strict multi-project data isolation.
@@ -292,6 +297,11 @@ Workflow yang didukung:
 - **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
+
+## Apa yang Baru (v1.3)
+
+- 📑 **Daftar Isi Otomatis Native Word & Auto-Formatter Standar Penerbit (`generate_standard_docx.py`)**: Script generator Python langsung untuk Microsoft Word `.docx` dengan *Word XML Field Codes* bawaan (`TOC \o "1-3" \h \z \u`) yang menjamin nomor halaman dinamis, *dot leaders* rapi, tanpa perlu buat daftar isi manual.
+- 📖 **Engine Layout Pembuka Bab Recto/Verso**: Memaksa setiap bab baru mulai di halaman kanan (Recto), jarak *Space Before* `120pt`, hierarki judul bab 2-baris, paragraf pertama tanpa indentasi, dan tabel standar 3-garis APA untuk semua preset penerbit (**PT. Asadel Liamsindo Teknologi**, **Asadel Publisher**, University Press, IKAPI, Springer/Elsevier).
 
 ## Apa yang Baru (v1.2)
 

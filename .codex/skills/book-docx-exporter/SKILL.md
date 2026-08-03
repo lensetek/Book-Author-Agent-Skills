@@ -35,15 +35,19 @@ Output:
 ## Process
 
 1. Run security/privacy and document metadata checks.
-2. Confirm page size; default to `UNESCO`.
-3. Map manuscript elements to editable Word styles.
-4. Define table of contents, figure list, table list, bibliography, and appendices.
-5. Preserve editability; do not flatten text into images.
-6. Recommend PDF export only after DOCX review/layout is approved.
+2. Confirm publisher preset and page size; default to `PT. Asadel Liamsindo Teknologi` (UNESCO 15.5x23 cm) for Indonesian manuscripts or `Asadel Publisher` (Royal 15.6x23.4 cm) for International manuscripts. Popular publisher options (University Press, Deepublish, Erlangga, Springer, Elsevier) are also supported.
+3. Map manuscript elements to editable Word styles using the standalone Python generator `python .codex/skills/scripts/generate_standard_docx.py`.
+4. Generate dynamic Table of Contents using native Word XML Field Codes (`TOC \o "1-3" \h \z \u`) rather than plain text.
+5. Apply Recto (Odd Page) Section Breaks and 120pt Space Before for clean Chapter Openers.
+6. Enforce No-Indent on the first paragraph after any heading, followed by 0.63cm First-Line Indent on subsequent paragraphs.
+7. Preserve editability; do not flatten text into images.
+8. Recommend PDF export only after DOCX review/layout is approved.
 
 ## Rules
 
 - **Default Text Alignment**: ALL body text paragraphs in generated DOCX files and export specifications MUST use **Justified (Rata Kanan-Kiri)** alignment (`alignment: justify`) by default. Headings, captions, and callout titles maintain their specified design alignment.
+- **Native Word TOC**: ALL Table of Contents elements MUST be generated via Word Field Codes (`w:fldSimple` / `TOC \o "1-3" \h \z \u`) to guarantee dynamic page numbering and dot leaders.
+- **Standalone Helper Execution**: Run `python .codex/skills/scripts/generate_standard_docx.py --input manuscript.md --output book.docx --preset asadel-id` for direct automated formatting.
 - DOCX is the preferred editable handoff format for authors, editors, and publishers.
 - Mark missing dimensions as `[exact size needed for technical export]`.
 - Do not silently remove unresolved citation gaps.

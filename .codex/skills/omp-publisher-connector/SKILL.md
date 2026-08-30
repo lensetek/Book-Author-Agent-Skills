@@ -47,19 +47,24 @@ Before starting ISBN Perpusnas RI submission:
 2. Confirm manuscript language is **Bahasa Indonesia (`id_ID`)**.
 3. If manuscript is in English or another language, notify the user that national ISBN Perpusnas RI registration requires Indonesian language text or dual-language metadata, and ask whether to proceed with International Open Access publishing via Asadel Publisher instead.
 
-### Step 2: Account Login / Registration Choice
-Present 3 submission execution modes to the author:
-- **Option 1: Fast Headless API / HTTP Session (Recommended - 2-5 Seconds)**:
-  - Run `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json` for lightning-fast background submission.
-  - Automatically extracts CSRF tokens, manages OMP cookies, and executes REST API payloads (`/api/v1/submissions`) without GUI browser lag.
-- **Option 2: Manual Mode (Default for Authors)**:
-  - Provide direct link: `https://publisher.asadel.co.id/v2/index.php/ap/user/register` (Register) or `https://publisher.asadel.co.id/v2/index.php/ap/login` (Login).
-  - Provide a formatted data summary table (Nama Depan, Nama Belakang, Afiliasi, Email, ORCID) so the author can copy-paste easily.
-- **Option 3: Assisted Visual Mode (Browser / Chrome DevTools MCP)**:
-  - Prompt author for transient input (Email, Affiliation, Author Name).
-  - Navigate browser to the OMP registration/login page.
-  - Auto-fill registration/login form fields via browser/MCP actions.
-  - **CRITICAL**: Never save passwords in logs, files, or persistent states.
+### Step 2: Interactive Confirmation & Multi-Tier Fallback Setup
+Before initiating OMP submission, present an **Interactive File & Metadata Confirmation Summary** to the author:
+- 📄 **Main Manuscript**: Path, file name, & size verification.
+- 🖼️ **Cover Image**: Path & resolution check.
+- 📑 **Front Matter**: Path verification.
+- 🌐 **Target Portal**: `https://publisher.asadel.co.id/v2/index.php/ap` (Open Monograph Press 3.3.0.5).
+- 🏷️ **ISBN Target**: ISBN Perpusnas RI (Katalog Dalam Terbitan / KDT).
+
+#### Multi-Tier File Upload Fallback Strategy:
+1. **Tier 1: Direct Headless API Upload (Primary - Fast 2-5s)**:
+   - Uses `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json --manuscript file.docx`.
+   - Executes background multipart upload to OMP REST endpoints without visual browser lag or File Picker pop-ups.
+2. **Tier 2: Direct DOM File Injection (Fallback A - Browser Automation)**:
+   - If Headless API is unavailable or user prefers visual browser, injects file paths directly via Chrome DevTools Protocol (`DOM.setFileInputFiles`) / Playwright `setInputFiles()`.
+   - Bypasses native Windows OS File Chooser pop-ups completely.
+3. **Tier 3: Guided Manual Pick Handoff (Fallback B - User Assisted)**:
+   - If Tier 1 & 2 encounter environment limits, agent pre-fills all 4 steps of OMP metadata (Title, Synopsis, Authors, Keywords), navigates to the File Upload modal, and presents a clear, step-by-step prompt:
+     > *"Form metadata OMP telah terisi 100%. Silakan klik 'Upload File' dan pilih berkas `manuscript.docx` dari folder ini: `[File Path]`. Tekan Lanjut setelah berkas terpilih."*
 
 ### Step 3: OMP 4-Step Monograph Submission Workflow
 
@@ -74,7 +79,7 @@ Present 3 submission execution modes to the author:
   - Privacy Statement agreed.
 
 #### 2. Upload Submission Files (Step 2 of OMP Wizard)
-Organize and upload manuscript components:
+Organize and upload manuscript components via Tier 1 (Headless API), Tier 2 (DOM Injection), or Tier 3 (Guided Handoff):
 - **Monograph File**: Main formatted `.docx` / `.pdf` manuscript (prepared by `generate_standard_docx.py`).
 - **Cover Image**: `.jpg` / `.png` front cover.
 - **Front Matter**: Title page, copyright page, preface, and Table of Contents `.pdf`.
@@ -98,6 +103,8 @@ Prepare and fill metadata aligned with Perpustakaan Nasional RI (ISBN & KDT) req
 ## Rules
 
 - **Indonesian Language Requirement**: For ISBN Perpusnas RI publication, manuscript text MUST be in Bahasa Indonesia (`id_ID`).
+- **Multi-Tier Fallback Enforcement**: Always attempt Tier 1 (Headless API) first. Fall back to Tier 2 (DOM Injection) and Tier 3 (Guided Handoff) seamlessly if needed.
+- **Interactive Confirmation**: Always request author confirmation of file paths and book metadata before initiating web submission.
 - **Credential Protection**: NEVER write user passwords, secret keys, or authentication tokens to disk, git history, or agent transcripts.
 - **OMP Version Alignment**: Use endpoints compatible with Open Monograph Press 3.3.0.5 (`/v2/index.php/ap`).
 - **User Autonomy**: Always respect user's choice between manual form entry and browser/MCP automation.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Book Cover Generator - Asadel Publisher</title>
+    <title>Academic Book Cover Generator - General & Asadel Publisher</title>
     <style>
         :root {
             --primary-color: #0f1e36;
@@ -110,6 +110,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            min-height: 48px;
         }
 
         .publisher-logo-img {
@@ -198,6 +199,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            min-height: 40px;
         }
 
         .back-cover-header h3 {
@@ -320,6 +322,16 @@
 
     <div class="controls-panel">
         <div class="form-group">
+            <label>Preset Penerbit</label>
+            <select id="inputPreset" onchange="applyPreset()">
+                <option value="asadel-id">PT. Asadel Liamsindo Teknologi / Asadel Publisher (Nasional)</option>
+                <option value="asadel-intl">Asadel Publisher (Internasional)</option>
+                <option value="university-press">University Press / Penerbit Kampus (Tanpa Logo)</option>
+                <option value="general-ikapi">Penerbit Komersial / Umum (Tanpa Logo)</option>
+                <option value="custom">Penerbit Lain / Custom (Tanpa Logo)</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label>Kategori Buku</label>
             <select id="inputCategory" onchange="updateCover()">
                 <option value="BUKU AJAR AKADEMIK">BUKU AJAR AKADEMIK</option>
@@ -344,6 +356,14 @@
             <input type="text" id="inputAffiliation" value="Universitas Indonesia & PT. Asadel Liamsindo Teknologi" oninput="updateCover()">
         </div>
         <div class="form-group">
+            <label>Nama Penerbit (Untuk Penerbit Umum/Custom)</label>
+            <input type="text" id="inputPublisherName" value="PT. ASADEL LIAMSINDO TEKNOLOGI" oninput="updateCover()">
+        </div>
+        <div class="form-group">
+            <label>Website Penerbit</label>
+            <input type="text" id="inputPublisherWebsite" value="publisher.asadel.co.id | asadel.co.id" oninput="updateCover()">
+        </div>
+        <div class="form-group">
             <label>Nomor ISBN Perpusnas</label>
             <input type="text" id="inputISBN" value="978-623-0000-00-0" oninput="updateCover()">
         </div>
@@ -359,7 +379,7 @@
         <!-- FRONT COVER -->
         <div class="cover-card front-cover">
             <div class="front-cover-header">
-                <img src="https://cdn.lensetek.com/logo.png" alt="Asadel Publisher" class="publisher-logo-img">
+                <img src="https://cdn.lensetek.com/logo.png" alt="Publisher Logo" id="frontPublisherLogo" class="publisher-logo-img">
                 <span class="category-badge" id="displayCategory">BUKU AJAR AKADEMIK</span>
             </div>
 
@@ -381,7 +401,7 @@
         <div class="cover-card back-cover">
             <div class="back-cover-header">
                 <h3>TENTANG BUKU INI</h3>
-                <img src="https://cdn.lensetek.com/logo.png" alt="Asadel Publisher" class="publisher-logo-img" style="max-height: 32px;">
+                <img src="https://cdn.lensetek.com/logo.png" alt="Publisher Logo" id="backPublisherLogo" class="publisher-logo-img" style="max-height: 32px;">
             </div>
 
             <p class="blurb-text" id="displayBlurb">
@@ -398,10 +418,10 @@
             </div>
 
             <div class="back-cover-footer">
-                <div class="publisher-contact">
-                    <strong>PT. ASADEL LIAMSINDO TEKNOLOGI</strong><br>
-                    Asadel Publisher (Anggota IKAPI)<br>
-                    Website: publisher.asadel.co.id | asadel.co.id
+                <div class="publisher-contact" id="displayPublisherContact">
+                    <strong id="displayPublisherName">PT. ASADEL LIAMSINDO TEKNOLOGI</strong><br>
+                    <span id="displayPublisherBrand">Asadel Publisher</span><br>
+                    Website: <span id="displayPublisherWebsite">publisher.asadel.co.id | asadel.co.id</span>
                 </div>
 
                 <div class="isbn-barcode-box">
@@ -414,7 +434,48 @@
     </div>
 
     <script>
+        const ASADEL_LOGO_URL = "https://cdn.lensetek.com/logo.png";
+
+        function applyPreset() {
+            const preset = document.getElementById('inputPreset').value;
+            const frontLogo = document.getElementById('frontPublisherLogo');
+            const backLogo = document.getElementById('backPublisherLogo');
+            
+            if (preset === 'asadel-id' || preset === 'asadel-intl') {
+                frontLogo.src = ASADEL_LOGO_URL;
+                frontLogo.style.display = 'block';
+                backLogo.src = ASADEL_LOGO_URL;
+                backLogo.style.display = 'block';
+                
+                if (preset === 'asadel-id') {
+                    document.getElementById('inputPublisherName').value = 'PT. ASADEL LIAMSINDO TEKNOLOGI';
+                    document.getElementById('inputPublisherWebsite').value = 'publisher.asadel.co.id | asadel.co.id';
+                } else {
+                    document.getElementById('inputPublisherName').value = 'ASADEL PUBLISHER';
+                    document.getElementById('inputPublisherWebsite').value = 'publisher.asadel.co.id';
+                }
+            } else {
+                // Remove logo for other publishers
+                frontLogo.style.display = 'none';
+                backLogo.style.display = 'none';
+                
+                if (preset === 'university-press') {
+                    document.getElementById('inputPublisherName').value = 'UI PUBLISHING / UGM PRESS';
+                    document.getElementById('inputPublisherWebsite').value = 'press.university.ac.id';
+                } else if (preset === 'general-ikapi') {
+                    document.getElementById('inputPublisherName').value = 'PENERBIT DEEPUBLISH / RAJAWALI PERS';
+                    document.getElementById('inputPublisherWebsite').value = 'penerbit-akademik.co.id';
+                } else {
+                    document.getElementById('inputPublisherName').value = 'PENERBIT AKADEMIK';
+                    document.getElementById('inputPublisherWebsite').value = 'www.penerbit.co.id';
+                }
+            }
+            updateCover();
+        }
+
         function updateCover() {
+            const preset = document.getElementById('inputPreset').value;
+            
             document.getElementById('displayCategory').innerText = document.getElementById('inputCategory').value;
             document.getElementById('displayTitle').innerText = document.getElementById('inputTitle').value;
             document.getElementById('displaySubtitle').innerText = document.getElementById('inputSubtitle').value;
@@ -422,7 +483,20 @@
             document.getElementById('displayAffiliation').innerText = document.getElementById('inputAffiliation').value;
             document.getElementById('displayBlurb').innerText = document.getElementById('inputBlurb').value;
             document.getElementById('displayISBN').innerText = 'ISBN ' + document.getElementById('inputISBN').value;
+            
+            document.getElementById('displayPublisherName').innerText = document.getElementById('inputPublisherName').value;
+            document.getElementById('displayPublisherWebsite').innerText = document.getElementById('inputPublisherWebsite').value;
+            
+            if (preset === 'asadel-id' || preset === 'asadel-intl') {
+                document.getElementById('displayPublisherBrand').innerText = 'Asadel Publisher';
+                document.getElementById('displayPublisherBrand').style.display = 'inline';
+            } else {
+                document.getElementById('displayPublisherBrand').style.display = 'none';
+            }
         }
+
+        // Initialize preset
+        applyPreset();
     </script>
 </body>
 </html>

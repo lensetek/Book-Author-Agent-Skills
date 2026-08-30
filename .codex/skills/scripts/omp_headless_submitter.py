@@ -107,7 +107,23 @@ class OMPHeadlessSubmitter:
         }
         return payload
 
-    def dry_run_submission(self, metadata_path):
+    def prepare_file_upload(self, file_path, component_type="monograph"):
+        """Validates file existence and prepares multipart upload spec for OMP Wizard."""
+        if not os.path.exists(file_path):
+            print(f"[-] File not found: {file_path}")
+            return False, None
+            
+        file_size = os.path.getsize(file_path)
+        file_name = os.path.basename(file_path)
+        print(f"[+] Direct File Upload Ready: '{file_name}' ({file_size / 1024:.1f} KB) as '{component_type}' component.")
+        return True, {
+            "file_name": file_name,
+            "file_path": file_path,
+            "file_size": file_size,
+            "component_type": component_type
+        }
+
+    def dry_run_submission(self, metadata_path, manuscript_file=None, cover_file=None):
         """Simulates submission validation without writing to DB."""
         print(f"[*] Running Dry-Run Headless Submission Check for: {metadata_path}")
         if not os.path.exists(metadata_path):
@@ -144,6 +160,10 @@ class OMPHeadlessSubmitter:
 
         print("\n[+] Structured Headless OMP Submission Payload Built Successfully:")
         print(json.dumps(payload, indent=2, ensure_ascii=False))
+        
+        if manuscript_file:
+            self.prepare_file_upload(manuscript_file, "monograph")
+            
         print("\n[OK] Dry-run verification complete. Ready for instant Headless API submission.")
 
 
@@ -151,6 +171,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="OMP Headless HTTP & REST API Fast Submitter")
     parser.add_argument("--check-portal", action="store_true", help="Probe OMP portal connectivity & CSRF token")
     parser.add_argument("--input", "-i", default="metadata_sample.json", help="Path to book metadata JSON file")
+    parser.add_argument("--manuscript", "-m", default=None, help="Path to formatted manuscript DOCX/PDF file")
     parser.add_argument("--dry-run", action="store_true", help="Run payload validation without committing submission")
     
     args = parser.parse_args()
@@ -160,4 +181,4 @@ if __name__ == "__main__":
         submitter.probe_portal()
     else:
         submitter.probe_portal()
-        submitter.dry_run_submission(args.input)
+        submitter.dry_run_submission(args.input, manuscript_file=args.manuscript)

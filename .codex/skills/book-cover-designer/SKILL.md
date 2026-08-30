@@ -39,14 +39,15 @@ Output:
 
 1. Check whether supplied assets contain private data, credentials, or restricted logos.
 2. Identify book type and academic tone.
-3. Define front cover hierarchy: title, subtitle, author, affiliation/publisher if needed.
-4. Define back cover: blurb, author bio, ISBN/barcode area, publisher area.
-5. Add spine only when page count or thickness requirement is known.
-6. Provide a design prompt that can be used in image/design tools.
+3. Define front cover hierarchy: title, subtitle, author, affiliation, category badge, and official Asadel Publisher logo (`https://cdn.lensetek.com/logo.png`).
+4. Define back cover: book blurb/synopsis, highlights box, ISBN Perpusnas barcode area, publisher contact block (`PT. ASADEL LIAMSINDO TEKNOLOGI` / `publisher.asadel.co.id`), and logo.
+5. Generate interactive HTML+CSS+JS cover preview template using `assets/book_cover_template.html` and `python .codex/skills/scripts/generate_book_cover.py`.
+6. Enable print-to-PDF export (`window.print()`) formatted for UNESCO/B5 print proofing.
 
 ## Rules
 
-- Do not generate bitmap images unless the user explicitly asks for image generation.
-- Mark unknown dimensions as `[dimension needed]`.
-- Default page size label is `UNESCO`; ask for exact dimensions if a print-ready file requires numerical measurements.
+- **Logo Asset**: Always use `https://cdn.lensetek.com/logo.png` for Asadel Publisher cover headers and back cover branding.
+- **HTML+JS Interactive Cover Engine**: Generate customizable HTML cover file using `python .codex/skills/scripts/generate_book_cover.py --title "..." --author "..." --isbn "..." --output cover.html`.
+- **Back Cover Barcode Area**: Enforce dedicated SVG/EAN-13 barcode placeholder box with `ISBN 978-623-XXXX-XX-X` label on the back cover.
+- Default page size label is `UNESCO` (15.5 x 23 cm); ask for exact dimensions if custom print-ready PDF requires specific bleed measurements.
 - Do not expose or repeat sensitive asset metadata.

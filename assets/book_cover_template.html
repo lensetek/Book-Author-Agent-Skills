@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Book Cover Generator - Asadel Publisher</title>
+    <style>
+        :root {
+            --primary-color: #0f1e36;
+            --accent-gold: #c5a059;
+            --bg-light: #fdfbf7;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', 'Palatino', serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            padding: 20px;
+        }
+
+        .controls-panel {
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .btn-action {
+            grid-column: 1 / -1;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background: #1e3a66;
+        }
+
+        .cover-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* 15.5 x 23 cm UNESCO Ratio (scaled for screen preview: 460px x 683px) */
+        .cover-card {
+            width: 460px;
+            height: 683px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Front Cover Specifics */
+        .front-cover {
+            background: linear-gradient(180deg, var(--bg-light) 0%, #f7f3eb 100%);
+            padding: 40px 35px;
+        }
+
+        .front-cover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .publisher-logo-img {
+            max-height: 48px;
+            object-fit: contain;
+        }
+
+        .category-badge {
+            font-family: system-ui, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 2px;
+        }
+
+        .front-cover-main {
+            margin-top: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .book-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .book-subtitle {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #475569;
+            line-height: 1.4;
+            margin-bottom: 25px;
+        }
+
+        .accent-banner {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+
+        .front-cover-footer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .author-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .author-affiliation {
+            font-family: system-ui, sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Back Cover Specifics */
+        .back-cover {
+            background: var(--bg-light);
+            padding: 35px 35px 25px 35px;
+        }
+
+        .back-cover-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-cover-header h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        .blurb-text {
+            font-size: 0.88rem;
+            line-height: 1.55;
+            text-align: justify;
+            color: #334155;
+            margin-bottom: 20px;
+        }
+
+        .highlights-box {
+            background: #f1ebd9;
+            border-left: 3px solid var(--accent-gold);
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlights-box h4 {
+            font-family: system-ui, sans-serif;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .highlights-list {
+            font-size: 0.8rem;
+            color: #475569;
+            padding-left: 16px;
+            line-height: 1.4;
+        }
+
+        .back-cover-footer {
+            margin-top: auto;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .publisher-contact {
+            font-family: system-ui, sans-serif;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .publisher-contact strong {
+            color: var(--primary-color);
+        }
+
+        .isbn-barcode-box {
+            background: var(--white);
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 140px;
+        }
+
+        .isbn-barcode-img {
+            width: 110px;
+            height: 38px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000,
+                #000 2px,
+                #fff 2px,
+                #fff 4px,
+                #000 4px,
+                #000 7px,
+                #fff 7px,
+                #fff 8px
+            );
+            margin-bottom: 4px;
+        }
+
+        .isbn-text {
+            font-family: monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Print Media Query */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .controls-panel {
+                display: none !important;
+            }
+            .cover-preview-container {
+                gap: 0;
+            }
+            .cover-card {
+                width: 100vw;
+                height: 100vh;
+                page-break-after: always;
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls-panel">
+        <div class="form-group">
+            <label>Kategori Buku</label>
+            <select id="inputCategory" onchange="updateCover()">
+                <option value="BUKU AJAR AKADEMIK">BUKU AJAR AKADEMIK</option>
+                <option value="BUKU REFERENSI">BUKU REFERENSI</option>
+                <option value="MONOGRAF RISET">MONOGRAF RISET</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Judul Utama Buku</label>
+            <input type="text" id="inputTitle" value="Buku Ajar Pemrograman Agentic AI" oninput="updateCover()">
+        </div>
+        <div class="form-group">
+            <label>Subjudul Buku</label>
+            <input type="text" id="inputSubtitle" value="Teori, Arsitektur Modern, dan Praktik Pengembangan AI Mandiri" oninput="updateCover()">
+        </div>
+        <div class="form-group">
+            <label>Nama Penulis</label>
+            <input type="text" id="inputAuthor" value="Andy Ismail, M.Kom." oninput="updateCover()">
+        </div>
+        <div class="form-group">
+            <label>Afiliasi Penulis</label>
+            <input type="text" id="inputAffiliation" value="Universitas Indonesia & PT. Asadel Liamsindo Teknologi" oninput="updateCover()">
+        </div>
+        <div class="form-group">
+            <label>Nomor ISBN Perpusnas</label>
+            <input type="text" id="inputISBN" value="978-623-0000-00-0" oninput="updateCover()">
+        </div>
+        <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Sinopsis / Book Blurb (Cover Belakang)</label>
+            <textarea id="inputBlurb" rows="3" oninput="updateCover()">Buku ini menyajikan panduan komprehensif mengenai konsep dan praktik pengembangan Agentic AI. Dirancang khusus untuk mahasiswa, dosen, dan praktisi kecerdasan buatan, buku ini membahas integrasi sistem mandiri, pengolahan data terstruktur, dan penerapan standar etika penerbitan ilmiah.</textarea>
+        </div>
+        <button class="btn-action" onclick="window.print()">🖨️ Cetak / Ekspor Cover ke PDF</button>
+    </div>
+
+    <div class="cover-preview-container">
+        
+        <!-- FRONT COVER -->
+        <div class="cover-card front-cover">
+            <div class="front-cover-header">
+                <img src="https://cdn.lensetek.com/logo.png" alt="Asadel Publisher" class="publisher-logo-img">
+                <span class="category-badge" id="displayCategory">BUKU AJAR AKADEMIK</span>
+            </div>
+
+            <div class="front-cover-main">
+                <h1 class="book-title" id="displayTitle">Buku Ajar Pemrograman Agentic AI</h1>
+                <p class="book-subtitle" id="displaySubtitle">Teori, Arsitektur Modern, dan Praktik Pengembangan AI Mandiri</p>
+                <div class="accent-banner"></div>
+            </div>
+
+            <div class="front-cover-footer">
+                <div class="author-block">
+                    <span class="author-name" id="displayAuthor">Andy Ismail, M.Kom.</span>
+                    <span class="author-affiliation" id="displayAffiliation">Universitas Indonesia & PT. Asadel Liamsindo Teknologi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BACK COVER -->
+        <div class="cover-card back-cover">
+            <div class="back-cover-header">
+                <h3>TENTANG BUKU INI</h3>
+                <img src="https://cdn.lensetek.com/logo.png" alt="Asadel Publisher" class="publisher-logo-img" style="max-height: 32px;">
+            </div>
+
+            <p class="blurb-text" id="displayBlurb">
+                Buku ini menyajikan panduan komprehensif mengenai konsep dan praktik pengembangan Agentic AI. Dirancang khusus untuk mahasiswa, dosen, dan praktisi kecerdasan buatan, buku ini membahas integrasi sistem mandiri, pengolahan data terstruktur, dan penerapan standar etika penerbitan ilmiah.
+            </p>
+
+            <div class="highlights-box">
+                <h4>Keunggulan Buku:</h4>
+                <ul class="highlights-list">
+                    <li>Disusun sesuai Rencana Pembelajaran Semester (RPS) terkini.</li>
+                    <li>Dilengkapi latihan terstruktur dan studi kasus nyata.</li>
+                    <li>Terbitan resmi ber-ISBN Perpustakaan Nasional RI.</li>
+                </ul>
+            </div>
+
+            <div class="back-cover-footer">
+                <div class="publisher-contact">
+                    <strong>PT. ASADEL LIAMSINDO TEKNOLOGI</strong><br>
+                    Asadel Publisher (Anggota IKAPI)<br>
+                    Website: publisher.asadel.co.id | asadel.co.id
+                </div>
+
+                <div class="isbn-barcode-box">
+                    <div class="isbn-barcode-img"></div>
+                    <span class="isbn-text" id="displayISBN">ISBN 978-623-0000-00-0</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function updateCover() {
+            document.getElementById('displayCategory').innerText = document.getElementById('inputCategory').value;
+            document.getElementById('displayTitle').innerText = document.getElementById('inputTitle').value;
+            document.getElementById('displaySubtitle').innerText = document.getElementById('inputSubtitle').value;
+            document.getElementById('displayAuthor').innerText = document.getElementById('inputAuthor').value;
+            document.getElementById('displayAffiliation').innerText = document.getElementById('inputAffiliation').value;
+            document.getElementById('displayBlurb').innerText = document.getElementById('inputBlurb').value;
+            document.getElementById('displayISBN').innerText = 'ISBN ' + document.getElementById('inputISBN').value;
+        }
+    </script>
+</body>
+</html>

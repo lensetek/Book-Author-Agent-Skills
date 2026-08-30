@@ -40,9 +40,11 @@ Output:
 - Glossary for technical terms when useful.
 - Bibliography and unresolved citation gaps.
 - Metadata/comment/privacy review if files are exported.
+- **Open Monograph Press (OMP) Submission Package**: Separate manuscript into monograph components (Main Manuscript `.docx`/`.pdf`, Front Matter `.pdf`, Cover `.jpg`) and prepare ISBN Perpusnas RI metadata (Synopsis, Keywords, Contributor ORCIDs) when routing to `omp-publisher-connector`.
 
 ## Rules
 
 - Do not silently remove unresolved citation gaps.
 - Keep output structure clean enough for DOCX conversion.
+- For ISBN Perpusnas RI submission via OMP, verify that manuscript text is in Bahasa Indonesia (`id_ID`).
 - If credentials or personal data remain, return `blocked_security`.

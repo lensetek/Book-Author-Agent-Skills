@@ -65,6 +65,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 - **book-cover-designer**: create front cover, back cover, and optional spine specifications or image prompts.
 - **book-docx-exporter**: prepare editable DOCX export specifications for Word/Google Docs with styles, page setup, headers, footers, TOC, and metadata checks.
 - **book-pdf-exporter**: prepare final PDF export specifications using default UNESCO size, A5, A4, or custom dimensions.
+- **omp-publisher-connector**: connect, register, log in, and submit Indonesian academic books for ISBN Perpusnas publication to the Open Monograph Press (OMP) portal at publisher.asadel.co.id.
 - **book-security-privacy-checker**: mandatory at intake and finalization. Check secrets, personal data, respondent data, metadata, and any frontend/client-side exposure risk.
 
 ## Routing Shortcuts
@@ -80,6 +81,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 - User asks for page design, chapter pages, header, footer, page numbers, typography, or interior layout: route to `book-layout-designer`.
 - User asks for editable Word/Google Docs output, `.docx`, or publisher-editable manuscript: route to `book-docx-exporter`.
 - User asks for final PDF, print proof, A5, A4, UNESCO, or custom book size: route to `book-pdf-exporter`.
+- User asks to publish, submit OMP, register publisher, daftar ISBN Perpusnas, or submit to publisher.asadel.co.id: route to `omp-publisher-connector`.
 - User asks for reviewer, kelayakan, substansi, novelty, contribution, or academic readiness: route to `academic-book-reviewer`.
 - User asks for editing, style, flow, repetition, clarity, or language polish: route to `academic-book-editor`.
 

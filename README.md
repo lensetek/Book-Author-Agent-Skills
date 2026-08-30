@@ -39,6 +39,12 @@ Supported workflows:
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
 
+## What's New (v1.4)
+
+- 🌐 **Open Monograph Press (OMP) Portal Integration (`publisher.asadel.co.id`)**: Direct agent skill connector (`omp-publisher-connector`) for PKP Open Monograph Press 3.3.0.5 portal integration at `https://publisher.asadel.co.id/v2/index.php/ap`.
+- 🇮🇩 **Indonesian Pre-Detection & ISBN Perpusnas Workflow**: Enforces Bahasa Indonesia language pre-detection before starting national publication workflows for ISBN Perpustakaan Nasional RI (KDT synopsis, contributor ORCIDs, and Indonesian catalog subjects).
+- 🔐 **Dual Account Options & Browser/MCP Form Filling**: Supports both manual login/registration guidance and assisted auto-filling via browser/Chrome DevTools MCP with 100% strict credential privacy protection.
+
 ## What's New (v1.3)
 
 - 📑 **Native Word TOC & Automated Publisher-Grade Formatting (`generate_standard_docx.py`)**: Direct python generator for Microsoft Word `.docx` with built-in Word XML Field Codes (`TOC \o "1-3" \h \z \u`) ensuring dynamic page numbers, dot leaders, and zero manual TOC regeneration.
@@ -297,6 +303,12 @@ Workflow yang didukung:
 - **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
+
+## Apa yang Baru (v1.4)
+
+- 🌐 **Integrasi Portal Open Monograph Press / OMP (`publisher.asadel.co.id`)**: Skill spesialis baru (`omp-publisher-connector`) untuk koneksi langsung ke portal OMP 3.3.0.5 di `https://publisher.asadel.co.id/v2/index.php/ap`.
+- 🇮🇩 **Deteksi Bahasa Indonesia & Alur ISBN Perpusnas RI**: Menegakkan pemeriksaan bahasa naskah berbahasa Indonesia sebelum alur pendaftaran penerbitan ber-ISBN Perpusnas RI (sinopsis KDT, ORCID kontributor, dan subjek katalog Indonesia).
+- 🔐 **Opsi Login/Registrasi & Bantuan Auto-Fill Browser/MCP**: Mendukung alur panduan manual maupun bantuan pengisian otomatis via Browser/Chrome DevTools MCP dengan perlindungan privasi kredensial 100% aman.
 
 ## Apa yang Baru (v1.3)
 

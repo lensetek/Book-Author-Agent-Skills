@@ -48,11 +48,14 @@ Before starting ISBN Perpusnas RI submission:
 3. If manuscript is in English or another language, notify the user that national ISBN Perpusnas RI registration requires Indonesian language text or dual-language metadata, and ask whether to proceed with International Open Access publishing via Asadel Publisher instead.
 
 ### Step 2: Account Login / Registration Choice
-Present 2 options to the author:
-- **Option 1: Manual Mode (Default / Recommended)**:
+Present 3 submission execution modes to the author:
+- **Option 1: Fast Headless API / HTTP Session (Recommended - 2-5 Seconds)**:
+  - Run `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json` for lightning-fast background submission.
+  - Automatically extracts CSRF tokens, manages OMP cookies, and executes REST API payloads (`/api/v1/submissions`) without GUI browser lag.
+- **Option 2: Manual Mode (Default for Authors)**:
   - Provide direct link: `https://publisher.asadel.co.id/v2/index.php/ap/user/register` (Register) or `https://publisher.asadel.co.id/v2/index.php/ap/login` (Login).
   - Provide a formatted data summary table (Nama Depan, Nama Belakang, Afiliasi, Email, ORCID) so the author can copy-paste easily.
-- **Option 2: Assisted Mode (Browser / Chrome DevTools MCP)**:
+- **Option 3: Assisted Visual Mode (Browser / Chrome DevTools MCP)**:
   - Prompt author for transient input (Email, Affiliation, Author Name).
   - Navigate browser to the OMP registration/login page.
   - Auto-fill registration/login form fields via browser/MCP actions.

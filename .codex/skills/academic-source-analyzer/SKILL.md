@@ -35,14 +35,16 @@ Output:
 ## Process
 
 1. Screen for credentials, private data, respondent identities, and confidential material.
-2. Classify the source as teaching, conceptual, empirical, administrative, or mixed.
-3. Extract only what is supported by the source.
-4. Separate facts, interpretations, and assumptions.
-5. Identify what must be added before book drafting.
-6. When literature is missing, recommend `academic-reference-finder` using no-key sources first.
+2. If the source is a PDF file (digital text or scanned image): DO NOT write ad-hoc Python scripts. Immediately run `uv run .codex/skills/scripts/extract_pdf_smart.py <path_to_pdf> -o <output.md>` (use `--toc-only` for rapid outline inspection or `--pages` for targeted sections) to extract token-optimized Markdown.
+3. Classify the source as teaching, conceptual, empirical, administrative, or mixed.
+4. Extract only what is supported by the source.
+5. Separate facts, interpretations, and assumptions.
+6. Identify what must be added before book drafting.
+7. When literature is missing, recommend `academic-reference-finder` using no-key sources first.
 
 ## Rules
 
+- Never write ad-hoc Python scripts to parse PDF files; always utilize `.codex/skills/scripts/extract_pdf_smart.py` to save tokens and handle scanned image OCR automatically.
 - Never invent bibliographic details.
 - Preserve important terminology from the source.
 - For RPS, prioritize CPMK, sub-CPMK, topics, assessment, and references.

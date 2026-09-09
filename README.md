@@ -35,9 +35,14 @@ Supported workflows:
 - **Verbatim Evidence Grounding & Verification**: constructed paraphrased synthesis in chapters paired with background verbatim snippet extraction from OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
 - **Graphify Knowledge Graph Harness**: project-bound local knowledge graph indexing (`graphify_harness.py` & `.graphify/`) for Obsidian Zettelkasten networks, CPMK prerequisite chains, and paper collections with 100% multi-project data isolation.
 - **HITL Book Author Checklist**: 5-phase interactive author approval gates (`hitl_book_checklist.md`).
-- **Python CLI Helper Infrastructure**: zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), CPMK matrix building (`build_cpmk_matrix.py`), and project-isolated graph indexing (`graphify_harness.py`).
+- **Python CLI Helper Infrastructure**: smart PDF & scanned OCR extraction (`extract_pdf_smart.py`), headless OMP publisher submitter (`omp_headless_submitter.py`), zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), CPMK matrix building (`build_cpmk_matrix.py`), and project-isolated graph indexing (`graphify_harness.py`).
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
+
+## What's New (v1.5)
+
+- 📄 **Smart PDF & Scanned OCR Extractor (`extract_pdf_smart.py`)**: Built-in intelligent PDF text layer extractor with automatic scanned image detection and multi-tier local OCR fallback (`RapidOCRPDF` via ONNX runtime, `pytesseract`, and native `Windows.Media.Ocr`). Converts complex PDFs into token-saving structured Markdown with `--toc-only` (up to 95%+ token savings), `--pages`, and `--grep` query filtering. Enables non-multimodal and lightweight LLMs to ingest academic reference materials and RPS documents without authoring ad-hoc scripts.
+- 🚀 **Headless OMP 3.3.0.5 Submitter & Layman-Friendly Wizard (`omp_headless_submitter.py`)**: 100% browser- and Chrome DevTools MCP-independent publishing connector for `https://publisher.asadel.co.id/v2/index.php/ap`. Features an interactive CLI menu in Bahasa Indonesia, automated background registration from manuscript metadata, headless HTTP CSRF & session handling, and a Safe Package Handoff generator (`--export-package`) complete with a 1-second browser console auto-fill helper (`autofill_helper.js`).
 
 ## What's New (v1.4)
 
@@ -115,6 +120,7 @@ Export defaults:
 | `book-docx-exporter` | Prepares editable DOCX output. | Define Word styles, page setup, header/footer, TOC, captions, metadata checks. | DOCX-ready export specification. |
 | `book-pdf-exporter` | Prepares final PDF output. | Define UNESCO/A5/A4/custom size, print settings, digital settings, preflight. | PDF-ready export specification. |
 | `book-security-privacy-checker` | Security and privacy guardrail. | Check credentials, personal data, metadata, frontend-exposed secrets. | Security findings and redaction recommendations. |
+| `omp-publisher-connector` | Open Monograph Press publisher submission. | Headless HTTP submission, ISBN Perpusnas KDT metadata, safe handoff package export, browser autofill. | OMP submission payload, KDT metadata package, publication status. |
 
 ## Main Workflow
 
@@ -143,6 +149,7 @@ flowchart TD
     P --> Q["book-docx-exporter"]
     Q --> R["book-pdf-exporter"]
     R --> S["book-security-privacy-checker"]
+    S --> V["omp-publisher-connector"]
 ```
 
 ## Installation
@@ -169,7 +176,7 @@ Expected confirmation:
 
 ```text
 Installation completed.
-Total installed agent skills: 24
+Total installed agent skills: 26
 
 Installed agents:
 - book-author-orchestrator
@@ -188,6 +195,7 @@ Installed agents:
 - rps-to-buku-ajar
 - paper-to-monograf
 - research-synthesis-to-reference-book
+- graphify-knowledge-graph
 - academic-book-reviewer
 - academic-book-editor
 - format-export-preparer
@@ -196,6 +204,7 @@ Installed agents:
 - book-docx-exporter
 - book-pdf-exporter
 - book-security-privacy-checker
+- omp-publisher-connector
 
 Every agent has a SKILL.md file.
 Orchestrator installed: yes.
@@ -300,9 +309,14 @@ Workflow yang didukung:
 - **Verbatim Evidence Grounding & Verifikasi Faktual**: penulisan bab terkonstruksi (*paraphrased synthesis*) yang dipadukan dengan penarikan kutipan verbatim asli dari OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
 - **Graphify Knowledge Graph Harness**: indeksasi graf pengetahuan lokal terisolasi per-proyek (`graphify_harness.py` & `.graphify/`) untuk jaringan Zettelkasten Obsidian, urutan prasyarat CPMK, dan kumpulan paper dengan 100% isolasi data.
 - **HITL Book Author Checklist**: gerbang persetujuan penulis 5-fase interaktif (`hitl_book_checklist.md`).
-- **Infrastruktur Python CLI Helpers**: verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
+- **Infrastruktur Python CLI Helpers**: ekstraksi teks cerdas & OCR PDF scan (`extract_pdf_smart.py`), submitter headless OMP (`omp_headless_submitter.py`), verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
+
+## Apa yang Baru (v1.5)
+
+- 📄 **Smart PDF & Scanned OCR Extractor (`extract_pdf_smart.py`)**: Ekstraktor cerdas teks PDF bawaan dengan deteksi otomatis halaman hasil scan/gambar dan multi-tier OCR lokal (`RapidOCRPDF` via runtime ONNX tanpa butuh instalasi Tesseract terpisah, `pytesseract`, dan native `Windows.Media.Ocr`). Mengonversi PDF menjadi Markdown terstruktur hemat token dengan dukungan `--toc-only` (hemat token hingga 95%+), pembatasan halaman `--pages`, dan filter `--grep`. Model non-multimodal dapat langsung membedah RPS dan literatur PDF tanpa perlu membuat script dadakan.
+- 🚀 **Headless OMP 3.3.0.5 Submitter & Wizard Ramah Penulis Awam (`omp_headless_submitter.py`)**: Konektor penerbitan ke `https://publisher.asadel.co.id/v2/index.php/ap` yang 100% mandiri tanpa membutuhkan browser GUI atau Chrome DevTools MCP. Dilengkapi menu interaktif Bahasa Indonesia untuk pengguna awam, pendaftaran akun otomatis dari profil naskah, autentikasi sesi HTTP headless, serta generator Paket Pengajuan Mandiri (`--export-package`) lengkap dengan kode autofill konsol browser 1-detik (`autofill_helper.js`).
 
 ## Apa yang Baru (v1.4)
 
@@ -380,6 +394,7 @@ Default export:
 | `book-docx-exporter` | Menyiapkan output DOCX editable. | Menentukan style Word, ukuran halaman, header/footer, TOC, caption, metadata check. | Spesifikasi export DOCX-ready. |
 | `book-pdf-exporter` | Menyiapkan output PDF final. | Menentukan ukuran UNESCO/A5/A4/custom, print settings, digital settings, preflight. | Spesifikasi export PDF-ready. |
 | `book-security-privacy-checker` | Guardrail keamanan dan privasi. | Mengecek credential, data pribadi, metadata, secret frontend. | Temuan keamanan dan rekomendasi redaksi. |
+| `omp-publisher-connector` | Pengajuan publikasi ke penerbit OMP. | Submit headless HTTP tanpa MCP, metadata KDT ISBN Perpusnas, ekspor paket mandiri, autofill browser. | Payload submission OMP, paket metadata KDT, status publikasi. |
 
 ## Workflow Utama
 
@@ -408,6 +423,7 @@ flowchart TD
     P --> Q["book-docx-exporter"]
     Q --> R["book-pdf-exporter"]
     R --> S["book-security-privacy-checker"]
+    S --> V["omp-publisher-connector"]
 ```
 
 ## Instalasi
@@ -432,7 +448,7 @@ Output konfirmasi yang diharapkan:
 
 ```text
 Install selesai.
-Total agent skill terinstall: 24
+Total agent skill terinstall: 26
 
 Daftar agent:
 - book-author-orchestrator
@@ -451,6 +467,7 @@ Daftar agent:
 - rps-to-buku-ajar
 - paper-to-monograf
 - research-synthesis-to-reference-book
+- graphify-knowledge-graph
 - academic-book-reviewer
 - academic-book-editor
 - format-export-preparer
@@ -459,6 +476,7 @@ Daftar agent:
 - book-docx-exporter
 - book-pdf-exporter
 - book-security-privacy-checker
+- omp-publisher-connector
 
 Semua agent memiliki SKILL.md.
 Orchestrator terinstall: ya.

@@ -55,16 +55,29 @@ Before initiating OMP submission, present an **Interactive File & Metadata Confi
 - 🌐 **Target Portal**: `https://publisher.asadel.co.id/v2/index.php/ap` (Open Monograph Press 3.3.0.5).
 - 🏷️ **ISBN Target**: ISBN Perpusnas RI (Katalog Dalam Terbitan / KDT).
 
-#### Multi-Tier File Upload Fallback Strategy:
-1. **Tier 1: Direct Headless API Upload (Primary - Fast 2-5s)**:
-   - Uses `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json --manuscript file.docx`.
-   - Executes background multipart upload to OMP REST endpoints without visual browser lag or File Picker pop-ups.
-2. **Tier 2: Direct DOM File Injection (Fallback A - Browser Automation)**:
-   - If Headless API is unavailable or user prefers visual browser, injects file paths directly via Chrome DevTools Protocol (`DOM.setFileInputFiles`) / Playwright `setInputFiles()`.
-   - Bypasses native Windows OS File Chooser pop-ups completely.
-3. **Tier 3: Guided Manual Pick Handoff (Fallback B - User Assisted)**:
-   - If Tier 1 & 2 encounter environment limits, agent pre-fills all 4 steps of OMP metadata (Title, Synopsis, Authors, Keywords), navigates to the File Upload modal, and presents a clear, step-by-step prompt:
-     > *"Form metadata OMP telah terisi 100%. Silakan klik 'Upload File' dan pilih berkas `manuscript.docx` dari folder ini: `[File Path]`. Tekan Lanjut setelah berkas terpilih."*
+#### Layman-Friendly Conversational Guidance (Panduan Ramah Pengguna Awam):
+Saat berinteraksi dengan penulis buku (dosen, peneliti, praktisi):
+- Gunakan bahasa Indonesia yang santun, jelas, dan hindari jargon teknis (seperti CLI, headless, REST endpoint, atau environment variable).
+- Tawarkan 3 opsi sederhana dalam percakapan:
+  1. **"Saya sudah punya akun"**: Agent membantu masuk & langsung memproses pengajuan naskah.
+  2. **"Saya belum punya akun"**: Agent mendaftarkan akun baru secara otomatis dari profil penulis (Nama, Email, Kampus) via `python .codex/skills/scripts/omp_headless_submitter.py --register`.
+  3. **"Paket Pengajuan Mandiri (Paling Direkomendasikan jika ingin menjaga privasi kata sandi)"**: Agent menyiapkan folder berkas lengkap beserta panduan 3 menit dan link langsung ke portal via `python .codex/skills/scripts/omp_headless_submitter.py --export-package ./paket_pengajuan`.
+
+#### Multi-Tier Submission Strategy (MCP & Non-MCP Environments):
+1. **Tier 1: Direct Headless HTTP/REST Submitter (Primary Non-MCP - Fast 2-5s)**:
+   - Uses `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json --manuscript file.docx --submit` (or interactive mode).
+   - 100% independent of Chrome DevTools MCP, Playwright, or browser GUI.
+   - Handles CSRF token, session management, and monograph metadata submission via background HTTP requests.
+2. **Tier 2: Safe Handoff Package Export (Zero-Risk Credential Privacy)**:
+   - Recommended when the author prefers not to expose credentials to AI or terminal.
+   - Run: `python .codex/skills/scripts/omp_headless_submitter.py --input metadata.json --manuscript file.docx --cover cover.jpg --export-package ./submission_package`.
+   - Generates:
+     - `metadata_pengajuan_omp.md`: Formatted Title, Subtitle, KDT Abstract, Authors, ORCID, Keywords.
+     - `autofill_helper.js`: 1-second browser console snippet (press F12 on OMP page, paste, and enter to auto-fill).
+     - `PANDUAN_PENGAJUAN.md`: Step-by-step checklist with direct click links to OMP Wizard.
+3. **Tier 3: Browser DOM File Injection (Chrome DevTools MCP / Visual Automation)**:
+   - Only used when Chrome DevTools MCP is installed and the user explicitly requests visual browser navigation.
+   - Injects file paths directly via Chrome DevTools Protocol (`DOM.setFileInputFiles`).
 
 ### Step 3: OMP 4-Step Monograph Submission Workflow
 

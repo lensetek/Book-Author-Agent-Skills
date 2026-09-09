@@ -35,14 +35,16 @@ Output:
 ## Process
 
 1. Run a quick security/privacy screen. Do not repeat exposed secrets.
-2. Identify the dominant source type and likely book type.
-3. Clarify the target reader: undergraduate, graduate, lecturer, researcher, practitioner, or general academic reader.
-4. Capture standards: campus, publisher, accreditation, grant, or internal use.
-5. Produce a concise project brief that downstream agents can use without re-asking basic questions.
+2. If input materials include PDF documents (syllabus, RPS, papers), extract them into structured Markdown via `uv run .codex/skills/scripts/extract_pdf_smart.py <path_to_pdf>` rather than writing ad-hoc parser scripts.
+3. Identify the dominant source type and likely book type.
+4. Clarify the target reader: undergraduate, graduate, lecturer, researcher, practitioner, or general academic reader.
+5. Capture standards: campus, publisher, accreditation, grant, or internal use.
+6. Produce a concise project brief that downstream agents can use without re-asking basic questions.
 
 ## Rules
 
 - Default to Indonesian academic context.
+- When receiving PDF source files, always process them via `.codex/skills/scripts/extract_pdf_smart.py` to minimize token overhead and support scanned PDFs.
 - If the user is unsure of book type, recommend one and explain the tradeoff briefly.
 - Do not begin writing chapters unless explicitly asked.
 - If credentials, private student/respondent data, or confidential institutional data appear, return `blocked_security` and request redaction.

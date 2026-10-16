@@ -41,6 +41,8 @@ Supported workflows:
 
 ## What's New (v1.5)
 
+- 🎨 **Multi-Engine Image & Academic Diagram Generation (`generate_image_smart.py`)**: Integrated zero-key AI image generation (Pollinations.ai Flux/SDXL) for book covers and thematic illustrations, programmatic vector diagram rendering (Mermaid.ink SVG/PNG) for zero-hallucination academic flowcharts/architectures, and high-resolution (300 DPI) print cover rasterization via headless browser & PyMuPDF.
+- 📐 **New Specialist Skill: `academic-figure-designer`**: Dedicated agent for designing, rendering, and embedding academic conceptual frameworks, methodology flowcharts, and scientific figures into chapter drafts with formal APA 7th captioning and narrative in-text discussions.
 - 📄 **Smart PDF & Scanned OCR Extractor (`extract_pdf_smart.py`)**: Built-in intelligent PDF text layer extractor with automatic scanned image detection and multi-tier local OCR fallback (`RapidOCRPDF` via ONNX runtime, `pytesseract`, and native `Windows.Media.Ocr`). Converts complex PDFs into token-saving structured Markdown with `--toc-only` (up to 95%+ token savings), `--pages`, and `--grep` query filtering. Enables non-multimodal and lightweight LLMs to ingest academic reference materials and RPS documents without authoring ad-hoc scripts.
 - 🚀 **Headless OMP 3.3.0.5 Submitter & Layman-Friendly Wizard (`omp_headless_submitter.py`)**: 100% browser- and Chrome DevTools MCP-independent publishing connector for `https://publisher.asadel.co.id/v2/index.php/ap`. Features an interactive CLI menu in Bahasa Indonesia, automated background registration from manuscript metadata, headless HTTP CSRF & session handling, and a Safe Package Handoff generator (`--export-package`) complete with a 1-second browser console auto-fill helper (`autofill_helper.js`).
 
@@ -105,6 +107,7 @@ Export defaults:
 | `academic-book-architect` | Designs the book structure. | Decide textbook, reference book, or monograph structure. | Chapter map and rationale. |
 | `academic-outline-builder` | Builds detailed outlines. | Create table of contents, chapter goals, summaries, figure/table needs. | Complete outline and chapter plan. |
 | `academic-chapter-writer` | Drafts academic chapters. | Write or revise chapters in Indonesian academic style. | Chapter draft and revision notes. |
+| `academic-figure-designer` | Designs and generates academic figures. | Vector diagrams (Mermaid), scientific charts, and AI illustrations with formal captioning. | Figure files (`figures/`), embed markdown, and in-text discussion. |
 | `human-revision-assistant` | Guides human revision. | Improve clarity, specificity, examples, author contribution, and non-generic prose. | Human revision tasks and suggested improvements. |
 | `originality-integrity-reviewer` | Reviews originality and ethics. | Check author contribution, generic patterns, source integrity, disclosure needs. | Originality and integrity findings. |
 | `citation-integrity-reviewer` | Reviews source integrity. | Flag unsupported claims, citation gaps, fabricated-reference risks. | Citation gap list. |
@@ -141,7 +144,8 @@ flowchart TD
     G --> J
     U --> J
     J --> K["academic-chapter-writer"]
-    K --> L["citation-integrity-reviewer"]
+    K --> W["academic-figure-designer"]
+    W --> L["citation-integrity-reviewer"]
     L --> M["academic-book-reviewer"]
     M --> N["academic-book-editor"]
     N --> O["format-export-preparer"]
@@ -176,7 +180,7 @@ Expected confirmation:
 
 ```text
 Installation completed.
-Total installed agent skills: 26
+Total installed agent skills: 27
 
 Installed agents:
 - book-author-orchestrator
@@ -189,6 +193,7 @@ Installed agents:
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
+- academic-figure-designer
 - human-revision-assistant
 - originality-integrity-reviewer
 - citation-integrity-reviewer
@@ -315,6 +320,8 @@ Workflow yang didukung:
 
 ## Apa yang Baru (v1.5)
 
+- 🎨 **Multi-Engine Image & Academic Diagram Generation (`generate_image_smart.py`)**: Generator gambar AI zero-key (Pollinations.ai Flux/SDXL) untuk cover buku dan ilustrasi tematik, render diagram vektor terprogram (Mermaid.ink SVG/PNG) untuk flowchart/arsitektur akademik bebas halusinasi, serta rasterisasi cover beresolusi tinggi (300 DPI) via headless browser & PyMuPDF.
+- 📐 **Skill Spesialis Baru: `academic-figure-designer`**: Agen khusus untuk merancang, me-render, dan menyematkan kerangka konseptual akademik, alur metodologi, dan diagram ilmiah ke dalam draf bab lengkap dengan penomoran resmi standar APA 7th serta pembahasan naratif dalam teks.
 - 📄 **Smart PDF & Scanned OCR Extractor (`extract_pdf_smart.py`)**: Ekstraktor cerdas teks PDF bawaan dengan deteksi otomatis halaman hasil scan/gambar dan multi-tier OCR lokal (`RapidOCRPDF` via runtime ONNX tanpa butuh instalasi Tesseract terpisah, `pytesseract`, dan native `Windows.Media.Ocr`). Mengonversi PDF menjadi Markdown terstruktur hemat token dengan dukungan `--toc-only` (hemat token hingga 95%+), pembatasan halaman `--pages`, dan filter `--grep`. Model non-multimodal dapat langsung membedah RPS dan literatur PDF tanpa perlu membuat script dadakan.
 - 🚀 **Headless OMP 3.3.0.5 Submitter & Wizard Ramah Penulis Awam (`omp_headless_submitter.py`)**: Konektor penerbitan ke `https://publisher.asadel.co.id/v2/index.php/ap` yang 100% mandiri tanpa membutuhkan browser GUI atau Chrome DevTools MCP. Dilengkapi menu interaktif Bahasa Indonesia untuk pengguna awam, pendaftaran akun otomatis dari profil naskah, autentikasi sesi HTTP headless, serta generator Paket Pengajuan Mandiri (`--export-package`) lengkap dengan kode autofill konsol browser 1-detik (`autofill_helper.js`).
 
@@ -379,6 +386,7 @@ Default export:
 | `academic-book-architect` | Merancang struktur buku. | Menentukan struktur buku ajar, referensi, atau monograf. | Chapter map dan rationale. |
 | `academic-outline-builder` | Menyusun outline detail. | Membuat daftar isi, tujuan bab, ringkasan, kebutuhan gambar/tabel. | Outline lengkap dan chapter plan. |
 | `academic-chapter-writer` | Menulis bab akademik. | Menulis atau merevisi bab dengan gaya akademik Indonesia. | Draft bab dan catatan revisi. |
+| `academic-figure-designer` | Mendesain dan me-render figur akademik. | Diagram vektor (Mermaid), bagan ilmiah, dan ilustrasi AI dengan penomoran resmi APA 7th. | File gambar (`figures/`), embed markdown, dan pembahasan naratif teks. |
 | `human-revision-assistant` | Memandu revisi manusia. | Memperjelas tulisan, menambah kekhususan, contoh, kontribusi penulis, dan mengurangi kesan generik. | Tugas revisi manusia dan saran perbaikan. |
 | `originality-integrity-reviewer` | Mereview orisinalitas dan etika. | Mengecek kontribusi penulis, pola generik, integritas sumber, kebutuhan disclosure. | Temuan orisinalitas dan integritas. |
 | `citation-integrity-reviewer` | Mengecek integritas sumber. | Menandai klaim tanpa sumber, gap sitasi, risiko referensi palsu. | Citation gap list. |
@@ -415,7 +423,8 @@ flowchart TD
     G --> J
     U --> J
     J --> K["academic-chapter-writer"]
-    K --> L["citation-integrity-reviewer"]
+    K --> W["academic-figure-designer"]
+    W --> L["citation-integrity-reviewer"]
     L --> M["academic-book-reviewer"]
     M --> N["academic-book-editor"]
     N --> O["format-export-preparer"]
@@ -448,7 +457,7 @@ Output konfirmasi yang diharapkan:
 
 ```text
 Install selesai.
-Total agent skill terinstall: 26
+Total agent skill terinstall: 27
 
 Daftar agent:
 - book-author-orchestrator
@@ -461,6 +470,7 @@ Daftar agent:
 - academic-book-architect
 - academic-outline-builder
 - academic-chapter-writer
+- academic-figure-designer
 - human-revision-assistant
 - originality-integrity-reviewer
 - citation-integrity-reviewer

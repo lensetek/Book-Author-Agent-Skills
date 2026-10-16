@@ -1,2 +1,29 @@
 # Graphify Knowledge Graph cache
 .graphify/
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Sensitive credentials & environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# Generated outputs & scratch tests
+figures/
+dist_packages/
+output/
+scratch/
+test_*.png
+test_*.pdf
+test_*.html
+test_*.svg
+cover_*.png

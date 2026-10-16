@@ -36,7 +36,7 @@ At project initiation, generate and maintain `hitl_book_checklist.md` to track m
 
 Before processing content, perform a security/privacy scan. If the input includes credentials, API keys, tokens, private student data, respondent identities, unpublished sensitive data, or frontend-exposed secrets, stop and ask the user to sanitize or approve a redacted workflow.
 
-Execute helper Python scripts (`validate_references.py`, `fetch_evidence_snippet.py`, `parse_rps.py`, `build_cpmk_matrix.py`, `graphify_harness.py`) located under `.codex/skills/scripts/` to accelerate parsing, reference validation, verbatim evidence auditing, and project-isolated knowledge graph indexing deterministically without bloating LLM context.
+Execute helper Python scripts (`validate_references.py`, `fetch_evidence_snippet.py`, `parse_rps.py`, `build_cpmk_matrix.py`, `graphify_harness.py`, `extract_pdf_smart.py`, `generate_image_smart.py`) located under `.codex/skills/scripts/` to accelerate parsing, reference validation, verbatim evidence auditing, PDF OCR extraction, figure generation, and project-isolated knowledge graph indexing deterministically without bloating LLM context.
 
 ## Agent Roles
 
@@ -51,6 +51,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 - **academic-book-architect**: choose structure based on book type.
 - **academic-outline-builder**: build table of contents, chapter objectives, chapter summaries, flow of argument, figures/tables needed, and missing sources.
 - **academic-chapter-writer**: draft chapters in Indonesian academic style.
+- **academic-figure-designer**: design and generate academic figures, conceptual frameworks, process flowcharts (Mermaid vector/PNG), and scientific charts with APA 7th captioning.
 - **human-revision-assistant**: guide human revision for clarity, originality, specificity, author contribution, and non-generic prose without detector evasion.
 - **originality-integrity-reviewer**: review originality, author contribution, source integrity, disclosure needs, and academic ethics.
 - **citation-integrity-reviewer**: mark claims needing citations, detect unsupported assertions, prevent fabricated references, and check bibliography consistency.
@@ -62,7 +63,7 @@ Use these specialist skills directly when the user asks for a narrow task. Use t
 - **academic-book-editor**: edit coherence, flow, terminology, repetition, style, readability, and academic tone.
 - **format-export-preparer**: prepare final Markdown or DOCX-ready structure.
 - **book-layout-designer**: design interior pages, chapter openers, headers, footers, page numbering, margins, and book typography.
-- **book-cover-designer**: create front cover, back cover, and optional spine specifications or image prompts.
+- **book-cover-designer**: create front cover, back cover, optional spine specifications, AI art generation, and 300 DPI print covers.
 - **book-docx-exporter**: prepare editable DOCX export specifications for Word/Google Docs with styles, page setup, headers, footers, TOC, and metadata checks.
 - **book-pdf-exporter**: prepare final PDF export specifications using default UNESCO size, A5, A4, or custom dimensions.
 - **omp-publisher-connector**: connect, register, log in, and submit Indonesian academic books for ISBN Perpusnas publication to the Open Monograph Press (OMP) portal at publisher.asadel.co.id.

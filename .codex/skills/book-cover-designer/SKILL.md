@@ -41,13 +41,16 @@ Output:
 2. Identify book type and academic tone.
 3. Define front cover hierarchy: title, subtitle, author, affiliation, category badge, and official Asadel Publisher logo (`https://cdn.lensetek.com/logo.png`).
 4. Define back cover: book blurb/synopsis, highlights box, ISBN Perpusnas barcode area, publisher contact block (`PT. ASADEL LIAMSINDO TEKNOLOGI` / `publisher.asadel.co.id`), and logo.
-5. Generate interactive HTML+CSS+JS cover preview template using `assets/book_cover_template.html` and `python .codex/skills/scripts/generate_book_cover.py`.
-6. Enable print-to-PDF export (`window.print()`) formatted for UNESCO/B5 print proofing.
+5. Generate AI cover artwork (zero-key FLUX):
+   `uv run python .codex/skills/scripts/generate_image_smart.py --prompt "..." --ratio 2:3 -o cover_artwork.png`
+6. Generate interactive HTML+CSS+JS cover preview and 300 DPI print-ready PNG:
+   `uv run python .codex/skills/scripts/generate_book_cover.py --preset asadel-id --title "..." --author "..." --illustration cover_artwork.png --render-png --output cover_print_300dpi.png`
+7. Enable print-to-PDF export (`window.print()`) formatted for UNESCO/B5 print proofing.
 
 ## Rules
 
 - **Logo Asset**: Always use `https://cdn.lensetek.com/logo.png` for Asadel Publisher cover headers and back cover branding.
-- **HTML+JS Interactive Cover Engine**: Generate customizable HTML cover file using `python .codex/skills/scripts/generate_book_cover.py --title "..." --author "..." --isbn "..." --output cover.html`.
+- **Automated 300 DPI Cover Render**: Always offer to generate the real cover image using `generate_image_smart.py` (for AI art) and `generate_book_cover.py --render-png` (for final 300 DPI print output).
 - **Back Cover Barcode Area**: Enforce dedicated SVG/EAN-13 barcode placeholder box with `ISBN 978-623-XXXX-XX-X` label on the back cover.
 - Default page size label is `UNESCO` (15.5 x 23 cm); ask for exact dimensions if custom print-ready PDF requires specific bleed measurements.
 - Do not expose or repeat sensitive asset metadata.

@@ -1,18 +1,25 @@
 #!/usr/bin/env python3
 """
 generate_book_cover.py
-Python helper script to populate and render Academic Book Cover Template (HTML/PDF)
+Python helper script to populate and render Academic Book Cover Template (HTML/PDF/PNG)
 Supports both specialized Asadel Publisher presets (using https://cdn.lensetek.com/logo.png)
 and general publishers (University Press, IKAPI/Commercial, Custom without logos).
 
+Features:
+- Instant HTML generation
+- AI Illustration embedding (--illustration path/url)
+- Direct 300 DPI print-ready PNG render (--render-png) via headless browser & PyMuPDF
+
 Usage:
   python generate_book_cover.py --preset asadel-id --title "Buku Ajar Pemrograman AI" --author "Andy Ismail" --output cover.html
+  python generate_book_cover.py --preset asadel-id --title "Buku Ajar Pemrograman AI" --render-png --output cover_print_300dpi.png
 """
 
 import sys
 import os
 import argparse
 import html
+from pathlib import Path
 
 # Find repository root path
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -48,7 +55,7 @@ PRESET_DEFAULTS = {
 }
 
 
-def generate_cover_html(title, subtitle, author, affiliation, category, synopsis, isbn, preset, publisher_name, publisher_website, output_path):
+def generate_cover_html(title, subtitle, author, affiliation, category, synopsis, isbn, preset, publisher_name, publisher_website, output_path, illustration=None):
     if not os.path.exists(TEMPLATE_PATH):
         print(f"Error: Master cover template not found at {TEMPLATE_PATH}")
         sys.exit(1)
@@ -89,15 +96,21 @@ def generate_cover_html(title, subtitle, author, affiliation, category, synopsis
         content = content.replace('id="backPublisherLogo" class="publisher-logo-img"', 'id="backPublisherLogo" class="publisher-logo-img" style="display:none;"')
         content = content.replace('<span id="displayPublisherBrand">Asadel Publisher</span>', '<span id="displayPublisherBrand" style="display:none;">Asadel Publisher</span>')
 
+    # Embed AI Illustration if provided
+    if illustration and os.path.exists(illustration):
+        ill_path = Path(illustration).resolve().as_uri()
+        ill_html = f'<div class="cover-illustration-box" style="margin: 15px 0; text-align: center;"><img src="{ill_path}" alt="Cover Artwork" style="max-height: 220px; max-width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></div>'
+        content = content.replace('<div class="accent-banner"></div>', f'<div class="accent-banner"></div>\n{ill_html}')
+
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(content)
         
     print(f"[+] Book cover HTML generated successfully ({preset} preset): {output_path}")
-    print("[+] Open the HTML file in any browser and click 'Cetak / Ekspor Cover ke PDF' to save as print-ready PDF.")
+    return output_path
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate Academic Book Cover HTML/PDF")
+    parser = argparse.ArgumentParser(description="Generate Academic Book Cover HTML/PDF/PNG")
     parser.add_argument("--preset", "-p", default="asadel-id", choices=list(PRESET_DEFAULTS.keys()), help="Publisher preset")
     parser.add_argument("--title", "-t", default="Buku Ajar Pemrograman Agentic AI", help="Book main title")
     parser.add_argument("--subtitle", "-s", default="Teori, Arsitektur Modern, dan Praktik Pengembangan AI Mandiri", help="Book subtitle")
@@ -108,9 +121,14 @@ if __name__ == "__main__":
     parser.add_argument("--category", default="BUKU AJAR AKADEMIK", help="Book category")
     parser.add_argument("--synopsis", default="Buku ini menyajikan panduan komprehensif mengenai konsep dan praktik pengembangan Agentic AI.", help="Back cover synopsis")
     parser.add_argument("--isbn", default="978-623-0000-00-0", help="ISBN Perpusnas number")
-    parser.add_argument("--output", "-o", default="rendered_cover.html", help="Output HTML file path")
+    parser.add_argument("--illustration", default=None, help="Path to AI illustration image to embed in front cover")
+    parser.add_argument("--output", "-o", default="rendered_cover.html", help="Output file path (.html or .png)")
+    parser.add_argument("--render-png", action="store_true", help="Render directly to 300 DPI PNG print file")
+    parser.add_argument("--dpi", type=int, default=300, help="DPI for raster render (default: 300)")
     
     args = parser.parse_args()
+
+    html_out = args.output if args.output.endswith(".html") else "temp_cover.html"
     generate_cover_html(
         title=args.title,
         subtitle=args.subtitle,
@@ -122,5 +140,11 @@ if __name__ == "__main__":
         preset=args.preset,
         publisher_name=args.publisher_name,
         publisher_website=args.publisher_website,
-        output_path=args.output
+        output_path=html_out,
+        illustration=args.illustration
     )
+
+    if args.render_png or args.output.endswith(".png"):
+        from generate_image_smart import render_html_cover_to_png
+        png_out = args.output if args.output.endswith(".png") else "cover_print_300dpi.png"
+        render_html_cover_to_png(html_out, png_out, dpi=args.dpi)

@@ -35,7 +35,7 @@ Supported workflows:
 - **Verbatim Evidence Grounding & Verification**: constructed paraphrased synthesis in chapters paired with background verbatim snippet extraction from OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
 - **Graphify Knowledge Graph Harness**: project-bound local knowledge graph indexing (`graphify_harness.py` & `.graphify/`) for Obsidian Zettelkasten networks, CPMK prerequisite chains, and paper collections with 100% multi-project data isolation.
 - **HITL Book Author Checklist**: 5-phase interactive author approval gates (`hitl_book_checklist.md`).
-- **Python CLI Helper Infrastructure**: smart PDF & scanned OCR extraction (`extract_pdf_smart.py`), headless OMP publisher submitter (`omp_headless_submitter.py`), zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), CPMK matrix building (`build_cpmk_matrix.py`), and project-isolated graph indexing (`graphify_harness.py`).
+- **Python CLI Helper Infrastructure**: multi-engine AI & vector diagrams (`generate_image_smart.py`), 300 DPI cover generator (`generate_book_cover.py`), smart PDF & scanned OCR extraction (`extract_pdf_smart.py`), headless OMP publisher submitter (`omp_headless_submitter.py`), native Word TOC generator (`generate_standard_docx.py`), zero-API-key reference checks (`validate_references.py`), RPS parsing (`parse_rps.py`), CPMK matrix building (`build_cpmk_matrix.py`), and project-isolated graph indexing (`graphify_harness.py`).
 - **Chrome DevTools MCP QA**: automated visual preflight layout checking, mobile viewport testing, and security/privacy network credential leak auditing.
 - **Production package**: prepare cover, interior layout, editable DOCX, final PDF export, and digital web reader edition.
 
@@ -258,6 +258,33 @@ Use book-docx-exporter. Prepare this manuscript for editable DOCX export with he
 Use book-pdf-exporter. Prepare final PDF export settings for A5 and include a preflight checklist.
 ```
 
+```text
+Use academic-figure-designer. Design a conceptual framework diagram for Chapter 3 showing the relationship between AI adoption, organizational culture, and SME performance, using Mermaid vector format and APA 7th captioning.
+```
+
+```text
+Use omp-publisher-connector. Submit my final monograph package to publisher.asadel.co.id with automated author registration and Perpusnas ISBN metadata.
+```
+
+### Standalone Python CLI Helpers
+
+```bash
+# 1. Multi-Engine Image & Academic Diagram Generator (generate_image_smart.py)
+python .codex/skills/scripts/generate_image_smart.py ai "Scientific conceptual framework of deep learning in finance" -o figures/framework.png --ar 16:9
+python .codex/skills/scripts/generate_image_smart.py diagram "flowchart TD\n  A[Data Input] --> B[Model] --> C[Output]" -o figures/diagram.png --dpi 300
+
+# 2. Render 300 DPI Print-Ready Book Cover (generate_book_cover.py)
+python .codex/skills/scripts/generate_book_cover.py --title "Metodologi Penelitian AI" --author "Dr. Asadel" --render-png --illustration
+
+# 3. Smart PDF & Scanned OCR Extractor (extract_pdf_smart.py)
+python .codex/skills/scripts/extract_pdf_smart.py input_book.pdf -o extracted.md --toc-only
+python .codex/skills/scripts/extract_pdf_smart.py input_book.pdf -o extracted.md --pages 1-20
+
+# 4. Headless OMP 3.3.0.5 Submitter & Layman Wizard (omp_headless_submitter.py)
+python .codex/skills/scripts/omp_headless_submitter.py
+python .codex/skills/scripts/omp_headless_submitter.py --export-package
+```
+
 ## Usage In Other Agent Apps
 
 For Claude, Antigravity, Cursor, ChatGPT custom agents, LangGraph, CrewAI, AutoGen, or other systems: give the agent the GitHub repository link, ask it to install the repository as agent skills in the project, then verify the installed agent count and `SKILL.md` files. If the app cannot install from GitHub automatically, paste the relevant `SKILL.md` content into the app's system instruction, project instruction, or agent prompt.
@@ -314,7 +341,7 @@ Workflow yang didukung:
 - **Verbatim Evidence Grounding & Verifikasi Faktual**: penulisan bab terkonstruksi (*paraphrased synthesis*) yang dipadukan dengan penarikan kutipan verbatim asli dari OpenAlex/Crossref/PubMed (`fetch_evidence_snippet.py` & `evidence_grounding_matrix.md`).
 - **Graphify Knowledge Graph Harness**: indeksasi graf pengetahuan lokal terisolasi per-proyek (`graphify_harness.py` & `.graphify/`) untuk jaringan Zettelkasten Obsidian, urutan prasyarat CPMK, dan kumpulan paper dengan 100% isolasi data.
 - **HITL Book Author Checklist**: gerbang persetujuan penulis 5-fase interaktif (`hitl_book_checklist.md`).
-- **Infrastruktur Python CLI Helpers**: ekstraksi teks cerdas & OCR PDF scan (`extract_pdf_smart.py`), submitter headless OMP (`omp_headless_submitter.py`), verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
+- **Infrastruktur Python CLI Helpers**: generator grafis AI & diagram vektor (`generate_image_smart.py`), cover cetak 300 DPI (`generate_book_cover.py`), ekstraksi teks cerdas & OCR PDF scan (`extract_pdf_smart.py`), submitter headless OMP (`omp_headless_submitter.py`), generator TOC Word native (`generate_standard_docx.py`), verifikasi DOI tanpa API key (`validate_references.py`), parsing RPS (`parse_rps.py`), pembentukan matriks CPMK (`build_cpmk_matrix.py`), dan indeksasi graf terisolasi (`graphify_harness.py`).
 - **QA Otomatis Chrome DevTools MCP**: preflight visual layout halaman, pengujian responsivitas layar mobile, dan audit keamanan lalu lintas data dari kebocoran kredensial.
 - **Paket produksi**: menyiapkan cover, layout interior, DOCX editable, PDF final, dan edisi digital web reader.
 
@@ -533,6 +560,33 @@ Gunakan book-docx-exporter. Siapkan naskah ini untuk export DOCX editable dengan
 
 ```text
 Gunakan book-pdf-exporter. Siapkan pengaturan export PDF final ukuran A5 dan sertakan preflight checklist.
+```
+
+```text
+Gunakan academic-figure-designer. Rancang diagram kerangka konseptual untuk Bab 3 yang menghubungkan adopsi AI, budaya organisasi, dan kinerja UMKM dengan format vektor Mermaid dan penomoran standar APA 7th.
+```
+
+```text
+Gunakan omp-publisher-connector. Ajukan paket naskah monograf final saya ke publisher.asadel.co.id dengan registrasi otomatis dan metadata ISBN Perpusnas.
+```
+
+### Standalone Python CLI Helpers
+
+```bash
+# 1. Generator Grafis AI & Diagram Vektor (generate_image_smart.py)
+python .codex/skills/scripts/generate_image_smart.py ai "Scientific conceptual framework of deep learning in finance" -o figures/framework.png --ar 16:9
+python .codex/skills/scripts/generate_image_smart.py diagram "flowchart TD\n  A[Data Input] --> B[Model] --> C[Output]" -o figures/diagram.png --dpi 300
+
+# 2. Render Cover Buku Cetak 300 DPI (generate_book_cover.py)
+python .codex/skills/scripts/generate_book_cover.py --title "Metodologi Penelitian AI" --author "Dr. Asadel" --render-png --illustration
+
+# 3. Ekstraktor Cerdas Teks & OCR PDF Scan (extract_pdf_smart.py)
+python .codex/skills/scripts/extract_pdf_smart.py input_buku.pdf -o extracted.md --toc-only
+python .codex/skills/scripts/extract_pdf_smart.py input_buku.pdf -o extracted.md --pages 1-20
+
+# 4. Submitter Headless OMP 3.3.0.5 & Wizard Penulis Awam (omp_headless_submitter.py)
+python .codex/skills/scripts/omp_headless_submitter.py
+python .codex/skills/scripts/omp_headless_submitter.py --export-package
 ```
 
 ## Kontrak Agent Portabel
